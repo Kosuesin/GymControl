@@ -29,4 +29,11 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="GymControl\Modelos\" />
+    <Folder Include="My Project\NewFolder1\" />
+    <Folder Include="My Project\NewFolder\" />
+    <Folder Include="database\" />
+  </ItemGroup>
+
 </Project>
