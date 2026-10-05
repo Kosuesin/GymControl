@@ -7,7 +7,7 @@ Public Module ConexionBD
         "Port=3306;" &
         "Database=gimnasio_db;" &
         "Uid=gym_app;" &
-        "Pwd=GymControl2026*;"
+        "Pwd=Gym#2026app;"
 
     Public Function ObtenerConexion() As MySqlConnection
         Return New MySqlConnection(CadenaConexion)
