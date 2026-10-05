@@ -488,4 +488,148 @@ Public Class UsuarioDAO
 
     End Function
 
+    ' Obtener Usuario Por Nombre
+    Public Function ObtenerUsuarioPorNombre(
+    nombreUsuario As String
+) As DataTable
+
+        Dim tabla As New DataTable()
+
+        Dim sql As String =
+            "SELECT
+            u.id_usuario,
+            u.nombre_usuario,
+            u.contrasena_hash,
+            u.sal,
+            u.id_rol,
+            r.nombre AS rol,
+            u.id_socio,
+            u.id_instructor,
+            u.intentos_fallidos,
+            u.activo
+         FROM usuarios u
+         INNER JOIN roles r
+            ON u.id_rol = r.id_rol
+         WHERE u.nombre_usuario = @usuario"
+
+        Using cn As MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@usuario",
+                    nombreUsuario.Trim()
+                )
+
+                cn.Open()
+
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+
+            End Using
+
+        End Using
+
+        Return tabla
+
+    End Function
+
+    ' REGISTRAR INTENTO FALLIDOS
+    Public Function IncrementarIntentosFallidos(
+        idUsuario As Integer
+    ) As Integer
+
+        Dim sql As String =
+            "UPDATE usuarios
+         SET intentos_fallidos = intentos_fallidos + 1
+         WHERE id_usuario = @idUsuario;
+
+         SELECT intentos_fallidos
+         FROM usuarios
+         WHERE id_usuario = @idUsuario;"
+
+        Using cn As MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Return Convert.ToInt32(cmd.ExecuteScalar())
+
+            End Using
+
+        End Using
+
+    End Function
+
+    ' BLOQUEAR USUARIO
+    Public Function BloquearUsuario(
+        idUsuario As Integer
+    ) As Boolean
+
+        Dim sql As String =
+            "UPDATE usuarios
+         SET activo = 0
+         WHERE id_usuario = @idUsuario"
+
+        Using cn As MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Return cmd.ExecuteNonQuery() > 0
+
+            End Using
+
+        End Using
+
+    End Function
+
+    ' REGISTRAR ÚLTIMO ACCESO
+    Public Function RegistrarUltimoAcceso(
+        idUsuario As Integer
+    ) As Boolean
+
+        Dim sql As String =
+            "UPDATE usuarios
+         SET
+            ultimo_acceso = CURRENT_TIMESTAMP,
+            intentos_fallidos = 0
+         WHERE id_usuario = @idUsuario"
+
+        Using cn As MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Return cmd.ExecuteNonQuery() > 0
+
+            End Using
+
+        End Using
+
+    End Function
+
 End Class
