@@ -20,6 +20,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Application.myapp</DependentUpon>
 		</Compile>
+		<Compile Update="My Project\Resources.Designer.vb">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
