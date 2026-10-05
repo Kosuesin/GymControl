@@ -49,4 +49,14 @@
         End Using
 
     End Sub
+    Private Sub mnuCambiarContrasena_Click(
+    sender As Object,
+    e As EventArgs
+) Handles mnuCambiarContrasena.Click
+
+        Using formulario As New frmCambiarContrasena()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
 End Class
