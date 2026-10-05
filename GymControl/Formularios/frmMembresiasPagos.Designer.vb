@@ -22,48 +22,56 @@ Partial Class frmMembresiasPagos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
         txtCedula = New TextBox()
         btnBuscarSocio = New Button()
         lblSocio = New Label()
         grpMembresia = New GroupBox()
-        lblTipoMembresia = New Label()
-        cboTipoMembresia = New ComboBox()
-        lblFechaInicio = New Label()
-        DateTimePicker1 = New DateTimePicker()
-        lblDuracion = New Label()
-        txtDuracion = New TextBox()
-        lblFechaVencimiento = New Label()
-        dtpFechccaVencimiento = New DateTimePicker()
-        lblPrecio = New Label()
-        txtPrecio = New TextBox()
-        lblEstado = New Label()
-        cboEstado = New ComboBox()
-        btnRegistrar = New Button()
-        btnRenovar = New Button()
-        btnSuspender = New Button()
         btnCacelar = New Button()
+        btnSuspender = New Button()
+        btnRenovar = New Button()
+        btnRegistrar = New Button()
+        cboEstado = New ComboBox()
+        lblEstado = New Label()
+        txtPrecio = New TextBox()
+        lblPrecio = New Label()
+        dtpFechccaVencimiento = New DateTimePicker()
+        lblFechaVencimiento = New Label()
+        txtDuracion = New TextBox()
+        lblDuracion = New Label()
+        DateTimePicker1 = New DateTimePicker()
+        lblFechaInicio = New Label()
+        cboTipoMembresia = New ComboBox()
+        lblTipoMembresia = New Label()
         dgvMembresias = New DataGridView()
         lblHistorialMembresias = New Label()
         grpPago = New GroupBox()
-        lblMembresiaPago = New Label()
-        cboMembresiaPago = New ComboBox()
-        lblTotalTitulo = New Label()
-        lblPagadoTitulo = New Label()
-        lblSaldoTitulo = New Label()
-        lblMonto = New Label()
-        txtMonto = New TextBox()
-        lblMetodo = New Label()
-        cboMetodo = New ComboBox()
-        lblTotal = New Label()
-        lblPagado = New Label()
-        lblSaldo = New Label()
-        lblReferencia = New Label()
-        txtReferencia = New TextBox()
-        lblObservacion = New Label()
-        txtObservacion = New TextBox()
-        btnRegistrarPago = New Button()
-        btnAnularPago = New Button()
         btnImprimirRecibo = New Button()
+        btnAnularPago = New Button()
+        btnRegistrarPago = New Button()
+        txtObservacion = New TextBox()
+        lblObservacion = New Label()
+        txtReferencia = New TextBox()
+        lblReferencia = New Label()
+        lblSaldo = New Label()
+        lblPagado = New Label()
+        lblTotal = New Label()
+        cboMetodo = New ComboBox()
+        lblMetodo = New Label()
+        txtMonto = New TextBox()
+        lblMonto = New Label()
+        lblSaldoTitulo = New Label()
+        lblPagadoTitulo = New Label()
+        lblTotalTitulo = New Label()
+        cboMembresiaPago = New ComboBox()
+        lblMembresiaPago = New Label()
         lblPagosMembresia = New Label()
         dgvPagos = New DataGridView()
         colFechaPago = New DataGridViewTextBoxColumn()
@@ -85,25 +93,35 @@ Partial Class frmMembresiasPagos
         ' 
         ' txtCedula
         ' 
-        txtCedula.Location = New Point(76, 31)
+        txtCedula.BorderStyle = BorderStyle.FixedSingle
+        txtCedula.Location = New Point(82, 26)
         txtCedula.Name = "txtCedula"
         txtCedula.PlaceholderText = "Cédula del socio"
-        txtCedula.Size = New Size(180, 23)
+        txtCedula.Size = New Size(240, 23)
         txtCedula.TabIndex = 0
         ' 
         ' btnBuscarSocio
         ' 
-        btnBuscarSocio.Location = New Point(262, 31)
+        btnBuscarSocio.BackColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
+        btnBuscarSocio.Cursor = Cursors.Hand
+        btnBuscarSocio.FlatAppearance.BorderSize = 0
+        btnBuscarSocio.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(61), CByte(96), CByte(135))
+        btnBuscarSocio.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(68), CByte(107), CByte(152))
+        btnBuscarSocio.FlatStyle = FlatStyle.Flat
+        btnBuscarSocio.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnBuscarSocio.ForeColor = Color.White
+        btnBuscarSocio.Location = New Point(338, 24)
         btnBuscarSocio.Name = "btnBuscarSocio"
-        btnBuscarSocio.Size = New Size(110, 23)
+        btnBuscarSocio.Size = New Size(130, 27)
         btnBuscarSocio.TabIndex = 1
         btnBuscarSocio.Text = "Buscar socio"
-        btnBuscarSocio.UseVisualStyleBackColor = True
+        btnBuscarSocio.UseVisualStyleBackColor = False
         ' 
         ' lblSocio
         ' 
         lblSocio.AutoSize = True
-        lblSocio.Location = New Point(21, 35)
+        lblSocio.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        lblSocio.Location = New Point(28, 30)
         lblSocio.Name = "lblSocio"
         lblSocio.Size = New Size(39, 15)
         lblSocio.TabIndex = 2
@@ -111,6 +129,8 @@ Partial Class frmMembresiasPagos
         ' 
         ' grpMembresia
         ' 
+        grpMembresia.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        grpMembresia.BackColor = Color.White
         grpMembresia.Controls.Add(btnCacelar)
         grpMembresia.Controls.Add(btnSuspender)
         grpMembresia.Controls.Add(btnRenovar)
@@ -127,166 +147,250 @@ Partial Class frmMembresiasPagos
         grpMembresia.Controls.Add(lblFechaInicio)
         grpMembresia.Controls.Add(cboTipoMembresia)
         grpMembresia.Controls.Add(lblTipoMembresia)
-        grpMembresia.Location = New Point(21, 77)
+        grpMembresia.Font = New Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        grpMembresia.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        grpMembresia.Location = New Point(24, 72)
         grpMembresia.Name = "grpMembresia"
-        grpMembresia.Size = New Size(500, 280)
+        grpMembresia.Size = New Size(513, 304)
         grpMembresia.TabIndex = 3
         grpMembresia.TabStop = False
         grpMembresia.Text = "Membresía"
         ' 
-        ' lblTipoMembresia
+        ' btnCacelar
         ' 
-        lblTipoMembresia.AutoSize = True
-        lblTipoMembresia.Location = New Point(6, 29)
-        lblTipoMembresia.Name = "lblTipoMembresia"
-        lblTipoMembresia.Size = New Size(109, 15)
-        lblTipoMembresia.TabIndex = 0
-        lblTipoMembresia.Text = "Tipo de membresía"
+        btnCacelar.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        btnCacelar.Cursor = Cursors.Hand
+        btnCacelar.FlatAppearance.BorderSize = 0
+        btnCacelar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnCacelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnCacelar.FlatStyle = FlatStyle.Flat
+        btnCacelar.Font = New Font("Segoe UI", 9F)
+        btnCacelar.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        btnCacelar.Location = New Point(382, 252)
+        btnCacelar.Name = "btnCacelar"
+        btnCacelar.Size = New Size(110, 36)
+        btnCacelar.TabIndex = 15
+        btnCacelar.Text = "Cancelar"
+        btnCacelar.UseVisualStyleBackColor = False
         ' 
-        ' cboTipoMembresia
+        ' btnSuspender
         ' 
-        cboTipoMembresia.FormattingEnabled = True
-        cboTipoMembresia.Location = New Point(121, 26)
-        cboTipoMembresia.Name = "cboTipoMembresia"
-        cboTipoMembresia.Size = New Size(121, 23)
-        cboTipoMembresia.TabIndex = 1
+        btnSuspender.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        btnSuspender.Cursor = Cursors.Hand
+        btnSuspender.FlatAppearance.BorderSize = 0
+        btnSuspender.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnSuspender.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnSuspender.FlatStyle = FlatStyle.Flat
+        btnSuspender.Font = New Font("Segoe UI", 9F)
+        btnSuspender.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        btnSuspender.Location = New Point(260, 252)
+        btnSuspender.Name = "btnSuspender"
+        btnSuspender.Size = New Size(110, 36)
+        btnSuspender.TabIndex = 14
+        btnSuspender.Text = "Suspender"
+        btnSuspender.UseVisualStyleBackColor = False
         ' 
-        ' lblFechaInicio
+        ' btnRenovar
         ' 
-        lblFechaInicio.AutoSize = True
-        lblFechaInicio.Location = New Point(6, 79)
-        lblFechaInicio.Name = "lblFechaInicio"
-        lblFechaInicio.Size = New Size(70, 15)
-        lblFechaInicio.TabIndex = 2
-        lblFechaInicio.Text = "Fecha inicio"
+        btnRenovar.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        btnRenovar.Cursor = Cursors.Hand
+        btnRenovar.FlatAppearance.BorderSize = 0
+        btnRenovar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnRenovar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnRenovar.FlatStyle = FlatStyle.Flat
+        btnRenovar.Font = New Font("Segoe UI", 9F)
+        btnRenovar.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        btnRenovar.Location = New Point(138, 252)
+        btnRenovar.Name = "btnRenovar"
+        btnRenovar.Size = New Size(110, 36)
+        btnRenovar.TabIndex = 13
+        btnRenovar.Text = "Renovar"
+        btnRenovar.UseVisualStyleBackColor = False
         ' 
-        ' DateTimePicker1
+        ' btnRegistrar
         ' 
-        DateTimePicker1.Location = New Point(82, 73)
-        DateTimePicker1.Name = "DateTimePicker1"
-        DateTimePicker1.Size = New Size(200, 23)
-        DateTimePicker1.TabIndex = 3
+        btnRegistrar.BackColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
+        btnRegistrar.Cursor = Cursors.Hand
+        btnRegistrar.FlatAppearance.BorderSize = 0
+        btnRegistrar.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(61), CByte(96), CByte(135))
+        btnRegistrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(68), CByte(107), CByte(152))
+        btnRegistrar.FlatStyle = FlatStyle.Flat
+        btnRegistrar.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnRegistrar.ForeColor = Color.White
+        btnRegistrar.Location = New Point(16, 252)
+        btnRegistrar.Name = "btnRegistrar"
+        btnRegistrar.Size = New Size(110, 36)
+        btnRegistrar.TabIndex = 12
+        btnRegistrar.Text = "Registrar"
+        btnRegistrar.UseVisualStyleBackColor = False
         ' 
-        ' lblDuracion
+        ' cboEstado
         ' 
-        lblDuracion.AutoSize = True
-        lblDuracion.Location = New Point(310, 29)
-        lblDuracion.Name = "lblDuracion"
-        lblDuracion.Size = New Size(55, 15)
-        lblDuracion.TabIndex = 4
-        lblDuracion.Text = "Duración"
-        ' 
-        ' txtDuracion
-        ' 
-        txtDuracion.Location = New Point(371, 26)
-        txtDuracion.Name = "txtDuracion"
-        txtDuracion.Size = New Size(100, 23)
-        txtDuracion.TabIndex = 5
-        ' 
-        ' lblFechaVencimiento
-        ' 
-        lblFechaVencimiento.AutoSize = True
-        lblFechaVencimiento.Location = New Point(6, 132)
-        lblFechaVencimiento.Name = "lblFechaVencimiento"
-        lblFechaVencimiento.Size = New Size(107, 15)
-        lblFechaVencimiento.TabIndex = 6
-        lblFechaVencimiento.Text = "Fecha vencimiento"
-        ' 
-        ' dtpFechccaVencimiento
-        ' 
-        dtpFechccaVencimiento.Location = New Point(119, 126)
-        dtpFechccaVencimiento.Name = "dtpFechccaVencimiento"
-        dtpFechccaVencimiento.Size = New Size(200, 23)
-        dtpFechccaVencimiento.TabIndex = 7
-        ' 
-        ' lblPrecio
-        ' 
-        lblPrecio.AutoSize = True
-        lblPrecio.Location = New Point(310, 79)
-        lblPrecio.Name = "lblPrecio"
-        lblPrecio.Size = New Size(57, 15)
-        lblPrecio.TabIndex = 8
-        lblPrecio.Text = "Precio C$"
-        ' 
-        ' txtPrecio
-        ' 
-        txtPrecio.Location = New Point(373, 76)
-        txtPrecio.Name = "txtPrecio"
-        txtPrecio.Size = New Size(100, 23)
-        txtPrecio.TabIndex = 9
+        cboEstado.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        cboEstado.Font = New Font("Segoe UI", 9F)
+        cboEstado.FormattingEnabled = True
+        cboEstado.Location = New Point(380, 140)
+        cboEstado.Name = "cboEstado"
+        cboEstado.Size = New Size(114, 23)
+        cboEstado.TabIndex = 11
         ' 
         ' lblEstado
         ' 
+        lblEstado.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         lblEstado.AutoSize = True
-        lblEstado.Location = New Point(6, 165)
+        lblEstado.Font = New Font("Segoe UI", 9F)
+        lblEstado.Location = New Point(314, 144)
         lblEstado.Name = "lblEstado"
         lblEstado.Size = New Size(42, 15)
         lblEstado.TabIndex = 10
         lblEstado.Text = "Estado"
         ' 
-        ' cboEstado
+        ' txtPrecio
         ' 
-        cboEstado.FormattingEnabled = True
-        cboEstado.Location = New Point(54, 162)
-        cboEstado.Name = "cboEstado"
-        cboEstado.Size = New Size(121, 23)
-        cboEstado.TabIndex = 11
+        txtPrecio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        txtPrecio.BorderStyle = BorderStyle.FixedSingle
+        txtPrecio.Font = New Font("Segoe UI", 9F)
+        txtPrecio.Location = New Point(380, 94)
+        txtPrecio.Name = "txtPrecio"
+        txtPrecio.Size = New Size(114, 23)
+        txtPrecio.TabIndex = 9
         ' 
-        ' btnRegistrar
+        ' lblPrecio
         ' 
-        btnRegistrar.Location = New Point(6, 206)
-        btnRegistrar.Name = "btnRegistrar"
-        btnRegistrar.Size = New Size(75, 23)
-        btnRegistrar.TabIndex = 12
-        btnRegistrar.Text = "Registrar"
-        btnRegistrar.UseVisualStyleBackColor = True
+        lblPrecio.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblPrecio.AutoSize = True
+        lblPrecio.Font = New Font("Segoe UI", 9F)
+        lblPrecio.Location = New Point(314, 98)
+        lblPrecio.Name = "lblPrecio"
+        lblPrecio.Size = New Size(57, 15)
+        lblPrecio.TabIndex = 8
+        lblPrecio.Text = "Precio C$"
         ' 
-        ' btnRenovar
+        ' dtpFechccaVencimiento
         ' 
-        btnRenovar.Location = New Point(100, 206)
-        btnRenovar.Name = "btnRenovar"
-        btnRenovar.Size = New Size(75, 23)
-        btnRenovar.TabIndex = 13
-        btnRenovar.Text = "Renovar"
-        btnRenovar.UseVisualStyleBackColor = True
+        dtpFechccaVencimiento.Font = New Font("Segoe UI", 9F)
+        dtpFechccaVencimiento.Location = New Point(134, 140)
+        dtpFechccaVencimiento.Name = "dtpFechccaVencimiento"
+        dtpFechccaVencimiento.Size = New Size(170, 23)
+        dtpFechccaVencimiento.TabIndex = 7
         ' 
-        ' btnSuspender
+        ' lblFechaVencimiento
         ' 
-        btnSuspender.Location = New Point(207, 206)
-        btnSuspender.Name = "btnSuspender"
-        btnSuspender.Size = New Size(75, 23)
-        btnSuspender.TabIndex = 14
-        btnSuspender.Text = "Suspender"
-        btnSuspender.UseVisualStyleBackColor = True
+        lblFechaVencimiento.AutoSize = True
+        lblFechaVencimiento.Font = New Font("Segoe UI", 9F)
+        lblFechaVencimiento.Location = New Point(16, 144)
+        lblFechaVencimiento.Name = "lblFechaVencimiento"
+        lblFechaVencimiento.Size = New Size(107, 15)
+        lblFechaVencimiento.TabIndex = 6
+        lblFechaVencimiento.Text = "Fecha vencimiento"
         ' 
-        ' btnCacelar
+        ' txtDuracion
         ' 
-        btnCacelar.Location = New Point(310, 206)
-        btnCacelar.Name = "btnCacelar"
-        btnCacelar.Size = New Size(75, 23)
-        btnCacelar.TabIndex = 15
-        btnCacelar.Text = "Cancelar"
-        btnCacelar.UseVisualStyleBackColor = True
+        txtDuracion.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        txtDuracion.BorderStyle = BorderStyle.FixedSingle
+        txtDuracion.Font = New Font("Segoe UI", 9F)
+        txtDuracion.Location = New Point(380, 48)
+        txtDuracion.Name = "txtDuracion"
+        txtDuracion.Size = New Size(114, 23)
+        txtDuracion.TabIndex = 5
+        ' 
+        ' lblDuracion
+        ' 
+        lblDuracion.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblDuracion.AutoSize = True
+        lblDuracion.Font = New Font("Segoe UI", 9F)
+        lblDuracion.Location = New Point(314, 52)
+        lblDuracion.Name = "lblDuracion"
+        lblDuracion.Size = New Size(55, 15)
+        lblDuracion.TabIndex = 4
+        lblDuracion.Text = "Duración"
+        ' 
+        ' DateTimePicker1
+        ' 
+        DateTimePicker1.Font = New Font("Segoe UI", 9F)
+        DateTimePicker1.Location = New Point(134, 94)
+        DateTimePicker1.Name = "DateTimePicker1"
+        DateTimePicker1.Size = New Size(170, 23)
+        DateTimePicker1.TabIndex = 3
+        ' 
+        ' lblFechaInicio
+        ' 
+        lblFechaInicio.AutoSize = True
+        lblFechaInicio.Font = New Font("Segoe UI", 9F)
+        lblFechaInicio.Location = New Point(16, 98)
+        lblFechaInicio.Name = "lblFechaInicio"
+        lblFechaInicio.Size = New Size(70, 15)
+        lblFechaInicio.TabIndex = 2
+        lblFechaInicio.Text = "Fecha inicio"
+        ' 
+        ' cboTipoMembresia
+        ' 
+        cboTipoMembresia.Font = New Font("Segoe UI", 9F)
+        cboTipoMembresia.FormattingEnabled = True
+        cboTipoMembresia.Location = New Point(134, 48)
+        cboTipoMembresia.Name = "cboTipoMembresia"
+        cboTipoMembresia.Size = New Size(170, 23)
+        cboTipoMembresia.TabIndex = 1
+        ' 
+        ' lblTipoMembresia
+        ' 
+        lblTipoMembresia.AutoSize = True
+        lblTipoMembresia.Font = New Font("Segoe UI", 9F)
+        lblTipoMembresia.Location = New Point(16, 52)
+        lblTipoMembresia.Name = "lblTipoMembresia"
+        lblTipoMembresia.Size = New Size(109, 15)
+        lblTipoMembresia.TabIndex = 0
+        lblTipoMembresia.Text = "Tipo de membresía"
         ' 
         ' dgvMembresias
         ' 
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(247), CByte(249), CByte(250))
+        dgvMembresias.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        dgvMembresias.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        dgvMembresias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvMembresias.BackgroundColor = Color.White
+        dgvMembresias.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle2.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        DataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        dgvMembresias.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvMembresias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        dgvMembresias.Location = New Point(21, 399)
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.White
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
+        DataGridViewCellStyle3.SelectionForeColor = Color.White
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        dgvMembresias.DefaultCellStyle = DataGridViewCellStyle3
+        dgvMembresias.EnableHeadersVisualStyles = False
+        dgvMembresias.GridColor = Color.FromArgb(CByte(224), CByte(228), CByte(231))
+        dgvMembresias.Location = New Point(24, 414)
         dgvMembresias.Name = "dgvMembresias"
-        dgvMembresias.Size = New Size(500, 150)
+        dgvMembresias.RowHeadersVisible = False
+        dgvMembresias.Size = New Size(513, 252)
         dgvMembresias.TabIndex = 4
         ' 
         ' lblHistorialMembresias
         ' 
+        lblHistorialMembresias.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblHistorialMembresias.AutoSize = True
-        lblHistorialMembresias.Location = New Point(21, 381)
+        lblHistorialMembresias.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblHistorialMembresias.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        lblHistorialMembresias.Location = New Point(24, 392)
         lblHistorialMembresias.Name = "lblHistorialMembresias"
-        lblHistorialMembresias.Size = New Size(184, 15)
+        lblHistorialMembresias.Size = New Size(191, 15)
         lblHistorialMembresias.TabIndex = 5
         lblHistorialMembresias.Text = "Historial de membresías del socio"
         ' 
         ' grpPago
         ' 
+        grpPago.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        grpPago.BackColor = Color.White
         grpPago.Controls.Add(btnImprimirRecibo)
         grpPago.Controls.Add(btnAnularPago)
         grpPago.Controls.Add(btnRegistrarPago)
@@ -306,208 +410,294 @@ Partial Class frmMembresiasPagos
         grpPago.Controls.Add(lblTotalTitulo)
         grpPago.Controls.Add(cboMembresiaPago)
         grpPago.Controls.Add(lblMembresiaPago)
-        grpPago.Location = New Point(539, 77)
+        grpPago.Font = New Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        grpPago.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        grpPago.Location = New Point(561, 72)
         grpPago.Name = "grpPago"
-        grpPago.Size = New Size(470, 297)
+        grpPago.Size = New Size(513, 304)
         grpPago.TabIndex = 6
         grpPago.TabStop = False
         grpPago.Text = "Registrar pago"
         ' 
-        ' lblMembresiaPago
+        ' btnImprimirRecibo
         ' 
-        lblMembresiaPago.AutoSize = True
-        lblMembresiaPago.Location = New Point(6, 37)
-        lblMembresiaPago.Name = "lblMembresiaPago"
-        lblMembresiaPago.Size = New Size(66, 15)
-        lblMembresiaPago.TabIndex = 0
-        lblMembresiaPago.Text = "Membresía"
+        btnImprimirRecibo.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        btnImprimirRecibo.Cursor = Cursors.Hand
+        btnImprimirRecibo.FlatAppearance.BorderSize = 0
+        btnImprimirRecibo.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnImprimirRecibo.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnImprimirRecibo.FlatStyle = FlatStyle.Flat
+        btnImprimirRecibo.Font = New Font("Segoe UI", 9F)
+        btnImprimirRecibo.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        btnImprimirRecibo.Location = New Point(344, 252)
+        btnImprimirRecibo.Name = "btnImprimirRecibo"
+        btnImprimirRecibo.Size = New Size(150, 36)
+        btnImprimirRecibo.TabIndex = 18
+        btnImprimirRecibo.Text = "Imprimir recibo"
+        btnImprimirRecibo.UseVisualStyleBackColor = False
         ' 
-        ' cboMembresiaPago
+        ' btnAnularPago
         ' 
-        cboMembresiaPago.FormattingEnabled = True
-        cboMembresiaPago.Location = New Point(78, 34)
-        cboMembresiaPago.Name = "cboMembresiaPago"
-        cboMembresiaPago.Size = New Size(121, 23)
-        cboMembresiaPago.TabIndex = 1
+        btnAnularPago.BackColor = Color.Red
+        btnAnularPago.Cursor = Cursors.Hand
+        btnAnularPago.FlatAppearance.BorderSize = 0
+        btnAnularPago.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnAnularPago.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnAnularPago.FlatStyle = FlatStyle.Flat
+        btnAnularPago.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnAnularPago.ForeColor = Color.White
+        btnAnularPago.Location = New Point(180, 252)
+        btnAnularPago.Name = "btnAnularPago"
+        btnAnularPago.Size = New Size(150, 36)
+        btnAnularPago.TabIndex = 17
+        btnAnularPago.Text = "Anular pago"
+        btnAnularPago.UseVisualStyleBackColor = False
         ' 
-        ' lblTotalTitulo
+        ' btnRegistrarPago
         ' 
-        lblTotalTitulo.AutoSize = True
-        lblTotalTitulo.Location = New Point(24, 73)
-        lblTotalTitulo.Name = "lblTotalTitulo"
-        lblTotalTitulo.Size = New Size(33, 15)
-        lblTotalTitulo.TabIndex = 2
-        lblTotalTitulo.Text = "Total"
+        btnRegistrarPago.BackColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
+        btnRegistrarPago.Cursor = Cursors.Hand
+        btnRegistrarPago.FlatAppearance.BorderSize = 0
+        btnRegistrarPago.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(61), CByte(96), CByte(135))
+        btnRegistrarPago.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(68), CByte(107), CByte(152))
+        btnRegistrarPago.FlatStyle = FlatStyle.Flat
+        btnRegistrarPago.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        btnRegistrarPago.ForeColor = Color.White
+        btnRegistrarPago.Location = New Point(16, 252)
+        btnRegistrarPago.Name = "btnRegistrarPago"
+        btnRegistrarPago.Size = New Size(150, 36)
+        btnRegistrarPago.TabIndex = 16
+        btnRegistrarPago.Text = "Registrar pago"
+        btnRegistrarPago.UseVisualStyleBackColor = False
         ' 
-        ' lblPagadoTitulo
+        ' txtObservacion
         ' 
-        lblPagadoTitulo.AutoSize = True
-        lblPagadoTitulo.Location = New Point(125, 73)
-        lblPagadoTitulo.Name = "lblPagadoTitulo"
-        lblPagadoTitulo.Size = New Size(47, 15)
-        lblPagadoTitulo.TabIndex = 3
-        lblPagadoTitulo.Text = "Pagado"
-        ' 
-        ' lblSaldoTitulo
-        ' 
-        lblSaldoTitulo.AutoSize = True
-        lblSaldoTitulo.Location = New Point(248, 73)
-        lblSaldoTitulo.Name = "lblSaldoTitulo"
-        lblSaldoTitulo.Size = New Size(36, 15)
-        lblSaldoTitulo.TabIndex = 4
-        lblSaldoTitulo.Text = "Saldo"
-        ' 
-        ' lblMonto
-        ' 
-        lblMonto.AutoSize = True
-        lblMonto.Location = New Point(24, 146)
-        lblMonto.Name = "lblMonto"
-        lblMonto.Size = New Size(68, 15)
-        lblMonto.TabIndex = 5
-        lblMonto.Text = "Monto C$ *"
-        ' 
-        ' txtMonto
-        ' 
-        txtMonto.Location = New Point(98, 143)
-        txtMonto.Name = "txtMonto"
-        txtMonto.Size = New Size(100, 23)
-        txtMonto.TabIndex = 6
-        ' 
-        ' lblMetodo
-        ' 
-        lblMetodo.AutoSize = True
-        lblMetodo.Location = New Point(204, 146)
-        lblMetodo.Name = "lblMetodo"
-        lblMetodo.Size = New Size(57, 15)
-        lblMetodo.TabIndex = 7
-        lblMetodo.Text = "Método *"
-        ' 
-        ' cboMetodo
-        ' 
-        cboMetodo.FormattingEnabled = True
-        cboMetodo.Location = New Point(267, 143)
-        cboMetodo.Name = "cboMetodo"
-        cboMetodo.Size = New Size(121, 23)
-        cboMetodo.TabIndex = 8
-        ' 
-        ' lblTotal
-        ' 
-        lblTotal.AutoSize = True
-        lblTotal.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblTotal.Location = New Point(24, 93)
-        lblTotal.Name = "lblTotal"
-        lblTotal.Size = New Size(64, 21)
-        lblTotal.TabIndex = 9
-        lblTotal.Text = "C$ 0.00"
-        ' 
-        ' lblPagado
-        ' 
-        lblPagado.AutoSize = True
-        lblPagado.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblPagado.Location = New Point(125, 93)
-        lblPagado.Name = "lblPagado"
-        lblPagado.Size = New Size(64, 21)
-        lblPagado.TabIndex = 10
-        lblPagado.Text = "C$ 0.00"
-        ' 
-        ' lblSaldo
-        ' 
-        lblSaldo.AutoSize = True
-        lblSaldo.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblSaldo.Location = New Point(248, 93)
-        lblSaldo.Name = "lblSaldo"
-        lblSaldo.Size = New Size(64, 21)
-        lblSaldo.TabIndex = 11
-        lblSaldo.Text = "C$ 0.00"
-        ' 
-        ' lblReferencia
-        ' 
-        lblReferencia.AutoSize = True
-        lblReferencia.Location = New Point(29, 190)
-        lblReferencia.Name = "lblReferencia"
-        lblReferencia.Size = New Size(62, 15)
-        lblReferencia.TabIndex = 12
-        lblReferencia.Text = "Referencia"
-        ' 
-        ' txtReferencia
-        ' 
-        txtReferencia.Location = New Point(99, 187)
-        txtReferencia.Name = "txtReferencia"
-        txtReferencia.PlaceholderText = "N° transferencia / voucher (opcional)"
-        txtReferencia.Size = New Size(289, 23)
-        txtReferencia.TabIndex = 13
+        txtObservacion.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        txtObservacion.BorderStyle = BorderStyle.FixedSingle
+        txtObservacion.Font = New Font("Segoe UI", 9F)
+        txtObservacion.Location = New Point(134, 214)
+        txtObservacion.Name = "txtObservacion"
+        txtObservacion.PlaceholderText = "Detalle u observación (opcional)"
+        txtObservacion.Size = New Size(360, 23)
+        txtObservacion.TabIndex = 15
         ' 
         ' lblObservacion
         ' 
         lblObservacion.AutoSize = True
-        lblObservacion.Location = New Point(29, 227)
+        lblObservacion.Font = New Font("Segoe UI", 9F)
+        lblObservacion.Location = New Point(16, 218)
         lblObservacion.Name = "lblObservacion"
         lblObservacion.Size = New Size(76, 15)
         lblObservacion.TabIndex = 14
         lblObservacion.Text = " Observación"
         ' 
-        ' txtObservacion
+        ' txtReferencia
         ' 
-        txtObservacion.Location = New Point(111, 219)
-        txtObservacion.Name = "txtObservacion"
-        txtObservacion.PlaceholderText = "Detalle u observación (opcional)"
-        txtObservacion.Size = New Size(277, 23)
-        txtObservacion.TabIndex = 15
+        txtReferencia.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        txtReferencia.BorderStyle = BorderStyle.FixedSingle
+        txtReferencia.Font = New Font("Segoe UI", 9F)
+        txtReferencia.Location = New Point(134, 178)
+        txtReferencia.Name = "txtReferencia"
+        txtReferencia.PlaceholderText = "N° transferencia / voucher (opcional)"
+        txtReferencia.Size = New Size(360, 23)
+        txtReferencia.TabIndex = 13
         ' 
-        ' btnRegistrarPago
+        ' lblReferencia
         ' 
-        btnRegistrarPago.Location = New Point(24, 248)
-        btnRegistrarPago.Name = "btnRegistrarPago"
-        btnRegistrarPago.Size = New Size(120, 35)
-        btnRegistrarPago.TabIndex = 16
-        btnRegistrarPago.Text = "Registrar pago"
-        btnRegistrarPago.UseVisualStyleBackColor = True
+        lblReferencia.AutoSize = True
+        lblReferencia.Font = New Font("Segoe UI", 9F)
+        lblReferencia.Location = New Point(16, 182)
+        lblReferencia.Name = "lblReferencia"
+        lblReferencia.Size = New Size(62, 15)
+        lblReferencia.TabIndex = 12
+        lblReferencia.Text = "Referencia"
         ' 
-        ' btnAnularPago
+        ' lblSaldo
         ' 
-        btnAnularPago.Location = New Point(164, 248)
-        btnAnularPago.Name = "btnAnularPago"
-        btnAnularPago.Size = New Size(120, 35)
-        btnAnularPago.TabIndex = 17
-        btnAnularPago.Text = "Anular pago"
-        btnAnularPago.UseVisualStyleBackColor = True
+        lblSaldo.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblSaldo.AutoSize = True
+        lblSaldo.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblSaldo.ForeColor = Color.FromArgb(CByte(169), CByte(68), CByte(66))
+        lblSaldo.Location = New Point(334, 94)
+        lblSaldo.Name = "lblSaldo"
+        lblSaldo.Size = New Size(64, 21)
+        lblSaldo.TabIndex = 11
+        lblSaldo.Text = "C$ 0.00"
         ' 
-        ' btnImprimirRecibo
+        ' lblPagado
         ' 
-        btnImprimirRecibo.Location = New Point(299, 248)
-        btnImprimirRecibo.Name = "btnImprimirRecibo"
-        btnImprimirRecibo.Size = New Size(120, 35)
-        btnImprimirRecibo.TabIndex = 18
-        btnImprimirRecibo.Text = "Imprimir recibo"
-        btnImprimirRecibo.UseVisualStyleBackColor = True
+        lblPagado.AutoSize = True
+        lblPagado.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblPagado.ForeColor = Color.FromArgb(CByte(46), CByte(125), CByte(50))
+        lblPagado.Location = New Point(175, 94)
+        lblPagado.Name = "lblPagado"
+        lblPagado.Size = New Size(64, 21)
+        lblPagado.TabIndex = 10
+        lblPagado.Text = "C$ 0.00"
+        ' 
+        ' lblTotal
+        ' 
+        lblTotal.AutoSize = True
+        lblTotal.Font = New Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblTotal.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        lblTotal.Location = New Point(16, 94)
+        lblTotal.Name = "lblTotal"
+        lblTotal.Size = New Size(64, 21)
+        lblTotal.TabIndex = 9
+        lblTotal.Text = "C$ 0.00"
+        ' 
+        ' cboMetodo
+        ' 
+        cboMetodo.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        cboMetodo.Font = New Font("Segoe UI", 9F)
+        cboMetodo.FormattingEnabled = True
+        cboMetodo.Location = New Point(380, 142)
+        cboMetodo.Name = "cboMetodo"
+        cboMetodo.Size = New Size(114, 23)
+        cboMetodo.TabIndex = 8
+        ' 
+        ' lblMetodo
+        ' 
+        lblMetodo.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblMetodo.AutoSize = True
+        lblMetodo.Font = New Font("Segoe UI", 9F)
+        lblMetodo.Location = New Point(314, 146)
+        lblMetodo.Name = "lblMetodo"
+        lblMetodo.Size = New Size(57, 15)
+        lblMetodo.TabIndex = 7
+        lblMetodo.Text = "Método *"
+        ' 
+        ' txtMonto
+        ' 
+        txtMonto.BorderStyle = BorderStyle.FixedSingle
+        txtMonto.Font = New Font("Segoe UI", 9F)
+        txtMonto.Location = New Point(134, 142)
+        txtMonto.Name = "txtMonto"
+        txtMonto.Size = New Size(170, 23)
+        txtMonto.TabIndex = 6
+        ' 
+        ' lblMonto
+        ' 
+        lblMonto.AutoSize = True
+        lblMonto.Font = New Font("Segoe UI", 9F)
+        lblMonto.Location = New Point(16, 146)
+        lblMonto.Name = "lblMonto"
+        lblMonto.Size = New Size(68, 15)
+        lblMonto.TabIndex = 5
+        lblMonto.Text = "Monto C$ *"
+        ' 
+        ' lblSaldoTitulo
+        ' 
+        lblSaldoTitulo.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        lblSaldoTitulo.AutoSize = True
+        lblSaldoTitulo.Font = New Font("Segoe UI", 9F)
+        lblSaldoTitulo.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
+        lblSaldoTitulo.Location = New Point(334, 74)
+        lblSaldoTitulo.Name = "lblSaldoTitulo"
+        lblSaldoTitulo.Size = New Size(36, 15)
+        lblSaldoTitulo.TabIndex = 4
+        lblSaldoTitulo.Text = "Saldo"
+        ' 
+        ' lblPagadoTitulo
+        ' 
+        lblPagadoTitulo.AutoSize = True
+        lblPagadoTitulo.Font = New Font("Segoe UI", 9F)
+        lblPagadoTitulo.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
+        lblPagadoTitulo.Location = New Point(175, 74)
+        lblPagadoTitulo.Name = "lblPagadoTitulo"
+        lblPagadoTitulo.Size = New Size(47, 15)
+        lblPagadoTitulo.TabIndex = 3
+        lblPagadoTitulo.Text = "Pagado"
+        ' 
+        ' lblTotalTitulo
+        ' 
+        lblTotalTitulo.AutoSize = True
+        lblTotalTitulo.Font = New Font("Segoe UI", 9F)
+        lblTotalTitulo.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
+        lblTotalTitulo.Location = New Point(16, 74)
+        lblTotalTitulo.Name = "lblTotalTitulo"
+        lblTotalTitulo.Size = New Size(33, 15)
+        lblTotalTitulo.TabIndex = 2
+        lblTotalTitulo.Text = "Total"
+        ' 
+        ' cboMembresiaPago
+        ' 
+        cboMembresiaPago.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
+        cboMembresiaPago.Font = New Font("Segoe UI", 9F)
+        cboMembresiaPago.FormattingEnabled = True
+        cboMembresiaPago.Location = New Point(134, 40)
+        cboMembresiaPago.Name = "cboMembresiaPago"
+        cboMembresiaPago.Size = New Size(360, 23)
+        cboMembresiaPago.TabIndex = 1
+        ' 
+        ' lblMembresiaPago
+        ' 
+        lblMembresiaPago.AutoSize = True
+        lblMembresiaPago.Font = New Font("Segoe UI", 9F)
+        lblMembresiaPago.Location = New Point(16, 44)
+        lblMembresiaPago.Name = "lblMembresiaPago"
+        lblMembresiaPago.Size = New Size(66, 15)
+        lblMembresiaPago.TabIndex = 0
+        lblMembresiaPago.Text = "Membresía"
         ' 
         ' lblPagosMembresia
         ' 
+        lblPagosMembresia.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lblPagosMembresia.AutoSize = True
-        lblPagosMembresia.Location = New Point(539, 381)
+        lblPagosMembresia.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        lblPagosMembresia.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        lblPagosMembresia.Location = New Point(561, 392)
         lblPagosMembresia.Name = "lblPagosMembresia"
-        lblPagosMembresia.Size = New Size(200, 15)
+        lblPagosMembresia.Size = New Size(206, 15)
         lblPagosMembresia.TabIndex = 7
         lblPagosMembresia.Text = "Pagos de la membresía seleccionada"
         ' 
         ' dgvPagos
         ' 
         dgvPagos.AllowUserToAddRows = False
+        DataGridViewCellStyle4.BackColor = Color.FromArgb(CByte(247), CByte(249), CByte(250))
+        dgvPagos.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle4
+        dgvPagos.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         dgvPagos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        dgvPagos.BackgroundColor = Color.White
+        dgvPagos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
+        DataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        DataGridViewCellStyle5.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        DataGridViewCellStyle5.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        DataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        DataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = DataGridViewTriState.True
+        dgvPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         dgvPagos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgvPagos.Columns.AddRange(New DataGridViewColumn() {colFechaPago, colMonto, colMetodo, colRegistradoPor, colEstadoPago})
-        dgvPagos.Location = New Point(539, 399)
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle8.BackColor = Color.White
+        DataGridViewCellStyle8.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle8.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        DataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
+        DataGridViewCellStyle8.SelectionForeColor = Color.White
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.False
+        dgvPagos.DefaultCellStyle = DataGridViewCellStyle8
+        dgvPagos.EnableHeadersVisualStyles = False
+        dgvPagos.GridColor = Color.FromArgb(CByte(224), CByte(228), CByte(231))
+        dgvPagos.Location = New Point(561, 414)
         dgvPagos.Name = "dgvPagos"
-        dgvPagos.Size = New Size(541, 150)
+        dgvPagos.RowHeadersVisible = False
+        dgvPagos.Size = New Size(513, 252)
         dgvPagos.TabIndex = 8
         ' 
         ' colFechaPago
         ' 
+        colFechaPago.FillWeight = 110F
         colFechaPago.HeaderText = "Fecha"
         colFechaPago.Name = "colFechaPago"
         ' 
         ' colMonto
         ' 
+        DataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight
+        colMonto.DefaultCellStyle = DataGridViewCellStyle6
+        colMonto.FillWeight = 90F
         colMonto.HeaderText = "Monto C$"
         colMonto.Name = "colMonto"
         ' 
@@ -518,16 +708,21 @@ Partial Class frmMembresiasPagos
         ' 
         ' colRegistradoPor
         ' 
+        colRegistradoPor.FillWeight = 125F
         colRegistradoPor.HeaderText = "Registrado"
         colRegistradoPor.Name = "colRegistradoPor"
         ' 
         ' colEstadoPago
         ' 
+        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
+        colEstadoPago.DefaultCellStyle = DataGridViewCellStyle7
+        colEstadoPago.FillWeight = 85F
         colEstadoPago.HeaderText = "Estado"
         colEstadoPago.Name = "colEstadoPago"
         ' 
         ' stsEstado
         ' 
+        stsEstado.BackColor = Color.FromArgb(CByte(240), CByte(242), CByte(244))
         stsEstado.Items.AddRange(New ToolStripItem() {lblEstadoSocio, lblMembresiasActiva, lblSaldoPendiente, lblUsuarioActual})
         stsEstado.Location = New Point(0, 681)
         stsEstado.Name = "stsEstado"
@@ -538,33 +733,40 @@ Partial Class frmMembresiasPagos
         ' 
         ' lblEstadoSocio
         ' 
+        lblEstadoSocio.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblEstadoSocio.Name = "lblEstadoSocio"
         lblEstadoSocio.Size = New Size(120, 17)
         lblEstadoSocio.Text = "Socio: Sin seleccionar"
         ' 
         ' lblMembresiasActiva
         ' 
+        lblMembresiasActiva.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblMembresiasActiva.Name = "lblMembresiasActiva"
         lblMembresiasActiva.Size = New Size(152, 17)
         lblMembresiasActiva.Text = "Membresía activa: Ninguna"
         ' 
         ' lblSaldoPendiente
         ' 
+        lblSaldoPendiente.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSaldoPendiente.Name = "lblSaldoPendiente"
         lblSaldoPendiente.Size = New Size(136, 17)
         lblSaldoPendiente.Text = "Saldo pendiente: C$ 0.00"
         ' 
         ' lblUsuarioActual
         ' 
+        lblUsuarioActual.AutoSize = False
+        lblUsuarioActual.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblUsuarioActual.Name = "lblUsuarioActual"
-        lblUsuarioActual.Size = New Size(131, 17)
+        lblUsuarioActual.Size = New Size(675, 17)
+        lblUsuarioActual.Spring = True
         lblUsuarioActual.Text = "Usuario: Sin seleccionar"
+        lblUsuarioActual.TextAlign = ContentAlignment.MiddleRight
         ' 
         ' frmMembresiasPagos
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.White
+        BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
         ClientSize = New Size(1098, 703)
         Controls.Add(stsEstado)
         Controls.Add(dgvPagos)
@@ -576,9 +778,10 @@ Partial Class frmMembresiasPagos
         Controls.Add(lblSocio)
         Controls.Add(btnBuscarSocio)
         Controls.Add(txtCedula)
+        Font = New Font("Segoe UI", 9F)
         Name = "frmMembresiasPagos"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "frmMembresiasPagos"
+        Text = "GymControl - Membresías y pagos"
         grpMembresia.ResumeLayout(False)
         grpMembresia.PerformLayout()
         CType(dgvMembresias, ComponentModel.ISupportInitialize).EndInit()
