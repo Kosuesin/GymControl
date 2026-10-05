@@ -14,6 +14,14 @@
         IdSocio = Nothing
         IdInstructor = Nothing
 
+
     End Sub
+
+    Public Shared Function HaySesion() As Boolean
+
+        Return IdUsuario > 0 AndAlso
+               Not String.IsNullOrWhiteSpace(NombreUsuario)
+
+    End Function
 
 End Class
