@@ -14,16 +14,28 @@ Public Module ConexionBD
     End Function
 
     Public Function ProbarConexion(ByRef mensaje As String) As Boolean
+
         Try
             Using cn As MySqlConnection = ObtenerConexion()
+
                 cn.Open()
-                mensaje = $"Conectado a MariaDB {cn.ServerVersion} · base gimnasio_db"
+
+                mensaje =
+                    $"Conectado a MariaDB {cn.ServerVersion} · base gimnasio_db"
+
                 Return True
+
             End Using
+
         Catch ex As MySqlException
-            mensaje = $"Error {ex.Number}: {ex.Message}"
+
+            mensaje =
+                $"Error {ex.Number}: {ex.Message}"
+
             Return False
+
         End Try
+
     End Function
 
 End Module
