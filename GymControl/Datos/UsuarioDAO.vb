@@ -487,6 +487,95 @@ Public Class UsuarioDAO
         End Using
 
     End Function
+    Public Function ObtenerCredenciales(
+    idUsuario As Integer
+) As DataRow
+
+        Dim tabla As New DataTable()
+
+        Dim sql As String =
+            "SELECT
+            id_usuario,
+            nombre_usuario,
+            contrasena_hash,
+            sal,
+            activo
+         FROM usuarios
+         WHERE id_usuario = @idUsuario
+         LIMIT 1"
+
+        Using cn As MySqlConnector.MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlConnector.MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Using adaptador As New MySqlConnector.MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+
+            End Using
+
+        End Using
+
+        If tabla.Rows.Count = 0 Then
+            Return Nothing
+        End If
+
+        Return tabla.Rows(0)
+
+    End Function
+
+
+    Public Function CambiarContrasena(
+        idUsuario As Integer,
+        nuevoHash As String,
+        nuevaSal As String
+    ) As Boolean
+
+        Dim sql As String =
+            "UPDATE usuarios
+         SET contrasena_hash = @hash,
+             sal = @sal,
+             intentos_fallidos = 0
+         WHERE id_usuario = @idUsuario
+           AND activo = 1"
+
+        Using cn As MySqlConnector.MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlConnector.MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@hash",
+                    nuevoHash
+                )
+
+                cmd.Parameters.AddWithValue(
+                    "@sal",
+                    nuevaSal
+                )
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Return cmd.ExecuteNonQuery() > 0
+
+            End Using
+
+        End Using
+
+    End Function
 
     ' Obtener Usuario Por Nombre
     Public Function ObtenerUsuarioPorNombre(

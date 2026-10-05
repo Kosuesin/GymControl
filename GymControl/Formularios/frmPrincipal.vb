@@ -38,4 +38,25 @@
         End Using
 
     End Sub
+
+    Private Sub btnBitacora_Click(
+    sender As Object,
+    e As EventArgs
+) Handles btnBitacora.Click
+
+        Using formulario As New frmBitacora()
+            formulario.ShowDialog()
+        End Using
+
+    End Sub
+    Private Sub mnuCambiarContrasena_Click(
+    sender As Object,
+    e As EventArgs
+) Handles mnuCambiarContrasena.Click
+
+        Using formulario As New frmCambiarContrasena()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
 End Class
