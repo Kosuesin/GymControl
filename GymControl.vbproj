@@ -54,9 +54,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="GymControl\Formularios\frmLogin.vb">
-			<SubType>Form</SubType>
-		</Compile>
+		<Compile Update="GymControl\Formularios\frmLogin.vb" />
 
 		<Compile Update="GymControl\Formularios\frmLogin.Designer.vb">
 			<DependentUpon>frmLogin.vb</DependentUpon>

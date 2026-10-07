@@ -33,8 +33,8 @@ Partial Class frmLogin
         btnSalir = New Button()
         lblMensaje = New Label()
         stsConexion = New StatusStrip()
-        pnlLogin = New Panel()
         lblConexion = New ToolStripStatusLabel()
+        pnlLogin = New Panel()
         stsConexion.SuspendLayout()
         pnlLogin.SuspendLayout()
         SuspendLayout()
@@ -43,9 +43,9 @@ Partial Class frmLogin
         ' 
         lblTitulo.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTitulo.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
-        lblTitulo.Location = New Point(42, 26)
+        lblTitulo.Location = New Point(48, 35)
         lblTitulo.Name = "lblTitulo"
-        lblTitulo.Size = New Size(296, 46)
+        lblTitulo.Size = New Size(338, 61)
         lblTitulo.TabIndex = 0
         lblTitulo.Text = "GymControl"
         lblTitulo.TextAlign = ContentAlignment.MiddleCenter
@@ -54,9 +54,9 @@ Partial Class frmLogin
         ' 
         lblSubtitulo.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblSubtitulo.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
-        lblSubtitulo.Location = New Point(42, 74)
+        lblSubtitulo.Location = New Point(48, 99)
         lblSubtitulo.Name = "lblSubtitulo"
-        lblSubtitulo.Size = New Size(296, 19)
+        lblSubtitulo.Size = New Size(338, 25)
         lblSubtitulo.TabIndex = 1
         lblSubtitulo.Text = "Sistema de gestión de gimnasio"
         lblSubtitulo.TextAlign = ContentAlignment.MiddleCenter
@@ -65,9 +65,9 @@ Partial Class frmLogin
         ' 
         lblUsuario.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblUsuario.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
-        lblUsuario.Location = New Point(42, 114)
+        lblUsuario.Location = New Point(48, 152)
         lblUsuario.Name = "lblUsuario"
-        lblUsuario.Size = New Size(296, 19)
+        lblUsuario.Size = New Size(338, 25)
         lblUsuario.TabIndex = 1
         lblUsuario.Text = "Usuario"
         lblUsuario.TextAlign = ContentAlignment.MiddleLeft
@@ -78,18 +78,19 @@ Partial Class frmLogin
         txtUsuario.BorderStyle = BorderStyle.FixedSingle
         txtUsuario.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtUsuario.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
-        txtUsuario.Location = New Point(42, 136)
+        txtUsuario.Location = New Point(48, 181)
+        txtUsuario.Margin = New Padding(3, 4, 3, 4)
         txtUsuario.Name = "txtUsuario"
-        txtUsuario.Size = New Size(296, 25)
+        txtUsuario.Size = New Size(338, 30)
         txtUsuario.TabIndex = 2
         ' 
         ' lblContrasena
         ' 
         lblContrasena.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblContrasena.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
-        lblContrasena.Location = New Point(42, 178)
+        lblContrasena.Location = New Point(48, 237)
         lblContrasena.Name = "lblContrasena"
-        lblContrasena.Size = New Size(296, 19)
+        lblContrasena.Size = New Size(338, 25)
         lblContrasena.TabIndex = 3
         lblContrasena.Text = "Contraseña"
         lblContrasena.TextAlign = ContentAlignment.MiddleLeft
@@ -100,9 +101,10 @@ Partial Class frmLogin
         txtContrasena.BorderStyle = BorderStyle.FixedSingle
         txtContrasena.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         txtContrasena.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
-        txtContrasena.Location = New Point(42, 200)
+        txtContrasena.Location = New Point(48, 267)
+        txtContrasena.Margin = New Padding(3, 4, 3, 4)
         txtContrasena.Name = "txtContrasena"
-        txtContrasena.Size = New Size(296, 25)
+        txtContrasena.Size = New Size(338, 30)
         txtContrasena.TabIndex = 4
         txtContrasena.UseSystemPasswordChar = True
         ' 
@@ -111,9 +113,10 @@ Partial Class frmLogin
         chkMostrar.AutoSize = True
         chkMostrar.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         chkMostrar.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
-        chkMostrar.Location = New Point(42, 240)
+        chkMostrar.Location = New Point(48, 320)
+        chkMostrar.Margin = New Padding(3, 4, 3, 4)
         chkMostrar.Name = "chkMostrar"
-        chkMostrar.Size = New Size(148, 23)
+        chkMostrar.Size = New Size(180, 27)
         chkMostrar.TabIndex = 5
         chkMostrar.Text = "Mostrar contraseña"
         chkMostrar.UseVisualStyleBackColor = True
@@ -128,9 +131,10 @@ Partial Class frmLogin
         btnIngresar.FlatStyle = FlatStyle.Flat
         btnIngresar.Font = New Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnIngresar.ForeColor = Color.White
-        btnIngresar.Location = New Point(42, 303)
+        btnIngresar.Location = New Point(48, 404)
+        btnIngresar.Margin = New Padding(3, 4, 3, 4)
         btnIngresar.Name = "btnIngresar"
-        btnIngresar.Size = New Size(296, 40)
+        btnIngresar.Size = New Size(338, 53)
         btnIngresar.TabIndex = 6
         btnIngresar.Text = "Iniciar sesión"
         btnIngresar.UseVisualStyleBackColor = False
@@ -145,9 +149,10 @@ Partial Class frmLogin
         btnSalir.FlatStyle = FlatStyle.Flat
         btnSalir.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         btnSalir.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
-        btnSalir.Location = New Point(42, 353)
+        btnSalir.Location = New Point(48, 471)
+        btnSalir.Margin = New Padding(3, 4, 3, 4)
         btnSalir.Name = "btnSalir"
-        btnSalir.Size = New Size(296, 40)
+        btnSalir.Size = New Size(338, 53)
         btnSalir.TabIndex = 7
         btnSalir.Text = "Salir"
         btnSalir.UseVisualStyleBackColor = False
@@ -157,21 +162,30 @@ Partial Class frmLogin
         lblMensaje.AutoEllipsis = True
         lblMensaje.Font = New Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         lblMensaje.ForeColor = Color.FromArgb(CByte(198), CByte(40), CByte(40))
-        lblMensaje.Location = New Point(42, 274)
+        lblMensaje.Location = New Point(48, 365)
         lblMensaje.Name = "lblMensaje"
-        lblMensaje.Size = New Size(296, 19)
+        lblMensaje.Size = New Size(338, 25)
         lblMensaje.TabIndex = 8
         lblMensaje.TextAlign = ContentAlignment.MiddleLeft
         lblMensaje.Visible = False
         ' 
         ' stsConexion
         ' 
+        stsConexion.ImageScalingSize = New Size(20, 20)
         stsConexion.Items.AddRange(New ToolStripItem() {lblConexion})
-        stsConexion.Location = New Point(0, 439)
+        stsConexion.Location = New Point(0, 589)
         stsConexion.Name = "stsConexion"
-        stsConexion.Size = New Size(434, 22)
+        stsConexion.Padding = New Padding(1, 0, 16, 0)
+        stsConexion.Size = New Size(496, 26)
         stsConexion.TabIndex = 9
         stsConexion.Text = "StatusStrip1"
+        ' 
+        ' lblConexion
+        ' 
+        lblConexion.Name = "lblConexion"
+        lblConexion.Size = New Size(479, 20)
+        lblConexion.Spring = True
+        lblConexion.Text = "Comprobando conexión..."
         ' 
         ' pnlLogin
         ' 
@@ -186,29 +200,24 @@ Partial Class frmLogin
         pnlLogin.Controls.Add(btnIngresar)
         pnlLogin.Controls.Add(txtContrasena)
         pnlLogin.Controls.Add(chkMostrar)
-        pnlLogin.Location = New Point(27, 12)
+        pnlLogin.Location = New Point(31, 16)
+        pnlLogin.Margin = New Padding(3, 4, 3, 4)
         pnlLogin.Name = "pnlLogin"
-        pnlLogin.Size = New Size(380, 416)
+        pnlLogin.Size = New Size(434, 555)
         pnlLogin.TabIndex = 10
-        ' 
-        ' lblConexion
-        ' 
-        lblConexion.Name = "lblConexion"
-        lblConexion.Size = New Size(388, 17)
-        lblConexion.Spring = True
-        lblConexion.Text = "Comprobando conexión..."
         ' 
         ' frmLogin
         ' 
         AcceptButton = btnIngresar
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
         CancelButton = btnSalir
-        ClientSize = New Size(434, 461)
+        ClientSize = New Size(496, 615)
         Controls.Add(pnlLogin)
         Controls.Add(stsConexion)
         FormBorderStyle = FormBorderStyle.FixedSingle
+        Margin = New Padding(3, 4, 3, 4)
         MaximizeBox = False
         MinimizeBox = False
         Name = "frmLogin"
