@@ -539,4 +539,15 @@ Public Class frmPrincipal
     Private Sub mnuPrincipal_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles mnuPrincipal.ItemClicked
 
     End Sub
+
+    Private Sub btnActividadesSalas_Click(
+    sender As Object,
+    e As EventArgs
+) Handles btnActividadesSalas.Click
+
+        Using formulario As New frmActividades()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
 End Class
