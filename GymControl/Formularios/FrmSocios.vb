@@ -1,6 +1,10 @@
 ﻿Public Class FrmSocios
 
     Private bnvSocios As New BindingNavigator(True)
+    Private ReadOnly socioDAO As New SocioDAO()
+    Private ReadOnly sociosBindingSource As New BindingSource()
+    Private modoEdicion As Boolean
+    Private idSocioSeleccionado As Integer
 
     Private Sub FrmSocios_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -12,8 +16,154 @@
         bnvSocios.BringToFront()
 
         AplicarApariencia()
+        ConfigurarFormulario()
+        CargarSocios()
+        ModoConsulta()
 
     End Sub
+
+    Private Sub ConfigurarFormulario()
+        cboEstado.Items.Clear()
+        cboEstado.Items.Add("Todos")
+        cboEstado.Items.Add("Activos")
+        cboEstado.Items.Add("Inactivos")
+        cboEstado.SelectedIndex = 0
+
+        cboGenero.Items.Clear()
+        cboGenero.Items.Add("F")
+        cboGenero.Items.Add("M")
+        cboGenero.SelectedIndex = -1
+
+        dgvSocios.ReadOnly = True
+        dgvSocios.AllowUserToAddRows = False
+        dgvSocios.AllowUserToDeleteRows = False
+        dgvSocios.MultiSelect = False
+        dgvSocios.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+
+        sociosBindingSource.DataSource = New DataTable()
+        bnvSocios.BindingSource = sociosBindingSource
+        dgvSocios.DataSource = sociosBindingSource
+    End Sub
+
+    Private Function EstadoSeleccionado() As Integer?
+        If cboEstado.SelectedIndex = 1 Then Return 1
+        If cboEstado.SelectedIndex = 2 Then Return 0
+        Return Nothing
+    End Function
+
+    Private Sub CargarSocios()
+        Try
+            sociosBindingSource.DataSource = socioDAO.ListarSocios(txtBuscar.Text, EstadoSeleccionado())
+            ConfigurarColumnas()
+            dgvSocios.ClearSelection()
+        Catch ex As Exception
+            MessageBox.Show("No se pudieron cargar los socios." & Environment.NewLine & Environment.NewLine & ex.Message,
+                            "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub ConfigurarColumnas()
+        If dgvSocios.Columns.Contains("id_socio") Then dgvSocios.Columns("id_socio").Visible = False
+        If dgvSocios.Columns.Contains("cedula") Then dgvSocios.Columns("cedula").HeaderText = "Cédula"
+        If dgvSocios.Columns.Contains("Nombre") Then dgvSocios.Columns("Nombre").HeaderText = "Socio"
+        If dgvSocios.Columns.Contains("Estado") Then dgvSocios.Columns("Estado").HeaderText = "Estado"
+    End Sub
+
+    Private Sub ModoConsulta()
+        modoEdicion = False
+        grpDatos.Enabled = False
+        btnGuardar.Enabled = False
+        btnCancelar.Enabled = False
+        btnEditar.Enabled = idSocioSeleccionado > 0
+        btnEliminar.Enabled = idSocioSeleccionado > 0
+        btnNuevo.Enabled = True
+    End Sub
+
+    Private Sub ModoNuevo()
+        modoEdicion = False
+        idSocioSeleccionado = 0
+        LimpiarCampos()
+        grpDatos.Enabled = True
+        chkActivo.Checked = True
+        dtpFechaRegistro.Value = Date.Today
+        btnGuardar.Enabled = True
+        btnCancelar.Enabled = True
+        btnEditar.Enabled = False
+        btnEliminar.Enabled = False
+        btnNuevo.Enabled = False
+        dgvSocios.ClearSelection()
+        txtCedula.Focus()
+    End Sub
+
+    Private Sub ModoEditar()
+        If idSocioSeleccionado = 0 Then
+            MessageBox.Show("Debe seleccionar un socio.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        modoEdicion = True
+        grpDatos.Enabled = True
+        btnGuardar.Enabled = True
+        btnCancelar.Enabled = True
+        btnEditar.Enabled = False
+        btnEliminar.Enabled = False
+        btnNuevo.Enabled = False
+        txtCedula.Focus()
+    End Sub
+
+    Private Sub LimpiarCampos()
+        txtCedula.Clear()
+        txtNombres.Clear()
+        txtApellidos.Clear()
+        txtTelefono.Clear()
+        txtCorreo.Clear()
+        txtDireccion.Clear()
+        cboGenero.SelectedIndex = -1
+        dtpFechaNacimiento.Value = Date.Today
+        dtpFechaRegistro.Value = Date.Today
+        chkActivo.Checked = True
+    End Sub
+
+    Private Function ValidarDatos(ByRef cedula As String, ByRef nombres As String, ByRef apellidos As String,
+                                  ByRef correo As String) As Boolean
+        cedula = txtCedula.Text.Trim()
+        nombres = txtNombres.Text.Trim()
+        apellidos = txtApellidos.Text.Trim()
+        correo = txtCorreo.Text.Trim()
+
+        txtCedula.Text = cedula
+        txtNombres.Text = nombres
+        txtApellidos.Text = apellidos
+        txtCorreo.Text = correo
+
+        If cedula = "" Then
+            MessageBox.Show("La cédula es obligatoria.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCedula.Focus()
+            Return False
+        End If
+        If nombres = "" Then
+            MessageBox.Show("Los nombres son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtNombres.Focus()
+            Return False
+        End If
+        If apellidos = "" Then
+            MessageBox.Show("Los apellidos son obligatorios.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtApellidos.Focus()
+            Return False
+        End If
+        If correo <> "" Then
+            Try
+                Dim correoValidado As New System.Net.Mail.MailAddress(correo)
+                If correoValidado.Address <> correo Then Throw New FormatException()
+            Catch ex As FormatException
+                MessageBox.Show("El correo electrónico no tiene un formato válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                txtCorreo.Focus()
+                Return False
+            End Try
+        End If
+
+        Return True
+    End Function
 
     Private Sub AplicarApariencia()
         Dim fondo As Color = Color.FromArgb(245, 247, 250)
@@ -187,7 +337,134 @@
         boton.Cursor = Cursors.Hand
     End Sub
 
-    Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
+    Private Sub dgvSocios_SelectionChanged(sender As Object, e As EventArgs) Handles dgvSocios.SelectionChanged
+        If modoEdicion OrElse dgvSocios.CurrentRow Is Nothing Then Return
+        If Not dgvSocios.Columns.Contains("id_socio") Then Return
+        If dgvSocios.CurrentRow.Cells("id_socio").Value Is Nothing OrElse IsDBNull(dgvSocios.CurrentRow.Cells("id_socio").Value) Then Return
 
+        CargarSocio(Convert.ToInt32(dgvSocios.CurrentRow.Cells("id_socio").Value))
+    End Sub
+
+    Private Sub CargarSocio(idSocio As Integer)
+        Try
+            Dim socio As DataRow = socioDAO.ObtenerSocioPorId(idSocio)
+            If socio Is Nothing Then Return
+
+            idSocioSeleccionado = Convert.ToInt32(socio("id_socio"))
+            txtCedula.Text = If(socio.IsNull("cedula"), "", socio("cedula").ToString())
+            txtNombres.Text = socio("nombres").ToString()
+            txtApellidos.Text = socio("apellidos").ToString()
+            If socio.IsNull("fecha_nacimiento") Then
+                dtpFechaNacimiento.Value = Date.Today
+            Else
+                dtpFechaNacimiento.Value = Convert.ToDateTime(socio("fecha_nacimiento"))
+            End If
+            cboGenero.SelectedItem = If(socio.IsNull("genero"), Nothing, socio("genero").ToString())
+            txtTelefono.Text = If(socio.IsNull("telefono"), "", socio("telefono").ToString())
+            txtCorreo.Text = If(socio.IsNull("correo"), "", socio("correo").ToString())
+            txtDireccion.Text = If(socio.IsNull("direccion"), "", socio("direccion").ToString())
+            dtpFechaRegistro.Value = Convert.ToDateTime(socio("fecha_registro"))
+            chkActivo.Checked = Convert.ToBoolean(socio("activo"))
+            ModoConsulta()
+        Catch ex As Exception
+            MessageBox.Show("No se pudieron cargar los datos del socio." & Environment.NewLine & Environment.NewLine & ex.Message,
+                            "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        CargarSocios()
+    End Sub
+
+    Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
+        ModoNuevo()
+    End Sub
+
+    Private Sub btnEditar_Click(sender As Object, e As EventArgs) Handles btnEditar.Click
+        ModoEditar()
+    End Sub
+
+    Private Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
+        Dim cedula As String = ""
+        Dim nombres As String = ""
+        Dim apellidos As String = ""
+        Dim correo As String = ""
+        If Not ValidarDatos(cedula, nombres, apellidos, correo) Then Return
+
+        Try
+            If socioDAO.ExisteCedula(cedula, If(modoEdicion, CType(idSocioSeleccionado, Integer?), Nothing)) Then
+                MessageBox.Show("Ya existe un socio con esa cédula.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                txtCedula.Focus()
+                Return
+            End If
+
+            Dim fechaNacimiento As DateTime? = dtpFechaNacimiento.Value.Date
+            Dim guardado As Boolean
+            If modoEdicion Then
+                guardado = socioDAO.ActualizarSocio(idSocioSeleccionado, cedula, nombres, apellidos, fechaNacimiento,
+                                                    ObtenerGenero(), txtTelefono.Text.Trim(), correo, txtDireccion.Text.Trim(),
+                                                    dtpFechaRegistro.Value.Date, chkActivo.Checked)
+            Else
+                guardado = socioDAO.InsertarSocio(cedula, nombres, apellidos, fechaNacimiento,
+                                                  ObtenerGenero(), txtTelefono.Text.Trim(), correo, txtDireccion.Text.Trim(),
+                                                  dtpFechaRegistro.Value.Date, chkActivo.Checked)
+            End If
+
+            If guardado Then
+                MessageBox.Show(If(modoEdicion, "Socio actualizado correctamente.", "Socio registrado correctamente."),
+                                "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CargarSocios()
+                LimpiarCampos()
+                idSocioSeleccionado = 0
+                ModoConsulta()
+            Else
+                MessageBox.Show("No se realizaron cambios en el socio.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+        Catch ex As MySqlConnector.MySqlException When ex.Number = 1062
+            MessageBox.Show("La cédula ya está registrada.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        Catch ex As Exception
+            MessageBox.Show("No se pudo guardar el socio." & Environment.NewLine & Environment.NewLine & ex.Message,
+                            "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Function ObtenerGenero() As String
+        If cboGenero.SelectedIndex < 0 Then Return ""
+        Return cboGenero.SelectedItem.ToString()
+    End Function
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        If idSocioSeleccionado = 0 Then
+            MessageBox.Show("Debe seleccionar un socio.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+        If Not chkActivo.Checked Then
+            MessageBox.Show("El socio ya está inactivo.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End If
+        If MessageBox.Show("¿Desea dar de baja al socio seleccionado?", "Confirmar baja",
+                           MessageBoxButtons.YesNo, MessageBoxIcon.Question) <> DialogResult.Yes Then Return
+
+        Try
+            If socioDAO.DesactivarSocio(idSocioSeleccionado) Then
+                MessageBox.Show("Socio dado de baja correctamente.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                CargarSocios()
+                LimpiarCampos()
+                idSocioSeleccionado = 0
+                ModoConsulta()
+            Else
+                MessageBox.Show("El socio ya estaba inactivo o no existe.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        Catch ex As Exception
+            MessageBox.Show("No se pudo dar de baja al socio." & Environment.NewLine & Environment.NewLine & ex.Message,
+                            "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        LimpiarCampos()
+        idSocioSeleccionado = 0
+        dgvSocios.ClearSelection()
+        ModoConsulta()
     End Sub
 End Class
