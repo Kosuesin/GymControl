@@ -721,4 +721,45 @@ Public Class UsuarioDAO
 
     End Function
 
+    ' OBTENER ÚLTIMO ACCESO REGISTRADO
+    Public Function ObtenerUltimoAcceso(
+        idUsuario As Integer
+    ) As DateTime?
+
+        Dim sql As String =
+            "SELECT ultimo_acceso
+         FROM usuarios
+         WHERE id_usuario = @idUsuario
+         LIMIT 1"
+
+        Using cn As MySqlConnection =
+            ConexionBD.ObtenerConexion()
+
+            Using cmd As New MySqlCommand(sql, cn)
+
+                cmd.Parameters.AddWithValue(
+                    "@idUsuario",
+                    idUsuario
+                )
+
+                cn.Open()
+
+                Dim resultado As Object =
+                    cmd.ExecuteScalar()
+
+                If resultado Is Nothing OrElse
+                   IsDBNull(resultado) Then
+
+                    Return Nothing
+
+                End If
+
+                Return Convert.ToDateTime(resultado)
+
+            End Using
+
+        End Using
+
+    End Function
+
 End Class

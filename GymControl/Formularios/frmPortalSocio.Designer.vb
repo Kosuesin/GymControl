@@ -100,7 +100,7 @@ Partial Class frmPortalSocio
         ' lblInfoAcceso
         ' 
         lblInfoAcceso.AutoSize = True
-        lblInfoAcceso.Font = New Font("Segoe UI", 9.0F)
+        lblInfoAcceso.Font = New Font("Segoe UI", 9F)
         lblInfoAcceso.ForeColor = Color.LightGray
         lblInfoAcceso.Location = New Point(95, 60)
         lblInfoAcceso.Name = "lblInfoAcceso"
@@ -111,7 +111,7 @@ Partial Class frmPortalSocio
         ' lblNombreSocio
         ' 
         lblNombreSocio.AutoSize = True
-        lblNombreSocio.Font = New Font("Segoe UI", 16.0F, FontStyle.Bold)
+        lblNombreSocio.Font = New Font("Segoe UI", 16F, FontStyle.Bold)
         lblNombreSocio.ForeColor = Color.White
         lblNombreSocio.Location = New Point(90, 25)
         lblNombreSocio.Name = "lblNombreSocio"
@@ -122,7 +122,7 @@ Partial Class frmPortalSocio
         ' lblAvatar
         ' 
         lblAvatar.BackColor = Color.FromArgb(CByte(71), CByte(98), CByte(130))
-        lblAvatar.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblAvatar.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
         lblAvatar.ForeColor = Color.White
         lblAvatar.Location = New Point(20, 20)
         lblAvatar.Name = "lblAvatar"
@@ -156,7 +156,7 @@ Partial Class frmPortalSocio
         ' lblNotaRenovacion
         ' 
         lblNotaRenovacion.AutoSize = True
-        lblNotaRenovacion.Font = New Font("Segoe UI", 8.0F, FontStyle.Italic)
+        lblNotaRenovacion.Font = New Font("Segoe UI", 8F, FontStyle.Italic)
         lblNotaRenovacion.ForeColor = Color.Gray
         lblNotaRenovacion.Location = New Point(15, 170)
         lblNotaRenovacion.Name = "lblNotaRenovacion"
@@ -175,7 +175,7 @@ Partial Class frmPortalSocio
         ' lblDiasRestantes
         ' 
         lblDiasRestantes.AutoSize = True
-        lblDiasRestantes.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblDiasRestantes.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblDiasRestantes.ForeColor = Color.DarkOrange
         lblDiasRestantes.Location = New Point(15, 120)
         lblDiasRestantes.Name = "lblDiasRestantes"
@@ -185,7 +185,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValIncluye
         ' 
-        lblValIncluye.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblValIncluye.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblValIncluye.Location = New Point(340, 80)
         lblValIncluye.Name = "lblValIncluye"
         lblValIncluye.Size = New Size(100, 23)
@@ -194,7 +194,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValVence
         ' 
-        lblValVence.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblValVence.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblValVence.Location = New Point(220, 80)
         lblValVence.Name = "lblValVence"
         lblValVence.Size = New Size(100, 23)
@@ -203,7 +203,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValInicio
         ' 
-        lblValInicio.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblValInicio.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblValInicio.Location = New Point(120, 80)
         lblValInicio.Name = "lblValInicio"
         lblValInicio.Size = New Size(100, 23)
@@ -212,7 +212,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValTipo
         ' 
-        lblValTipo.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblValTipo.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblValTipo.Location = New Point(15, 80)
         lblValTipo.Name = "lblValTipo"
         lblValTipo.Size = New Size(100, 23)
@@ -254,7 +254,7 @@ Partial Class frmPortalSocio
         ' lblEstadoMembresia
         ' 
         lblEstadoMembresia.BackColor = Color.LightGreen
-        lblEstadoMembresia.Font = New Font("Segoe UI", 9.0F, FontStyle.Bold)
+        lblEstadoMembresia.Font = New Font("Segoe UI", 9F, FontStyle.Bold)
         lblEstadoMembresia.ForeColor = Color.DarkGreen
         lblEstadoMembresia.Location = New Point(340, 15)
         lblEstadoMembresia.Name = "lblEstadoMembresia"
@@ -266,7 +266,7 @@ Partial Class frmPortalSocio
         ' lblTituloMembresia
         ' 
         lblTituloMembresia.AutoSize = True
-        lblTituloMembresia.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblTituloMembresia.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
         lblTituloMembresia.Location = New Point(15, 15)
         lblTituloMembresia.Name = "lblTituloMembresia"
         lblTituloMembresia.Size = New Size(147, 28)
@@ -291,7 +291,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValSaldo
         ' 
-        lblValSaldo.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblValSaldo.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblValSaldo.ForeColor = Color.Red
         lblValSaldo.Location = New Point(320, 140)
         lblValSaldo.Name = "lblValSaldo"
@@ -302,7 +302,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValPagado
         ' 
-        lblValPagado.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblValPagado.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblValPagado.ForeColor = Color.Green
         lblValPagado.Location = New Point(320, 100)
         lblValPagado.Name = "lblValPagado"
@@ -313,7 +313,7 @@ Partial Class frmPortalSocio
         ' 
         ' lblValTotal
         ' 
-        lblValTotal.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblValTotal.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblValTotal.Location = New Point(320, 60)
         lblValTotal.Name = "lblValTotal"
         lblValTotal.Size = New Size(130, 20)
@@ -348,7 +348,7 @@ Partial Class frmPortalSocio
         ' lblTituloCuenta
         ' 
         lblTituloCuenta.AutoSize = True
-        lblTituloCuenta.Font = New Font("Segoe UI", 12.0F, FontStyle.Bold)
+        lblTituloCuenta.Font = New Font("Segoe UI", 12F, FontStyle.Bold)
         lblTituloCuenta.Location = New Point(15, 15)
         lblTituloCuenta.Name = "lblTituloCuenta"
         lblTituloCuenta.Size = New Size(174, 28)
@@ -358,7 +358,7 @@ Partial Class frmPortalSocio
         ' lblTituloPagos
         ' 
         lblTituloPagos.AutoSize = True
-        lblTituloPagos.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblTituloPagos.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblTituloPagos.Location = New Point(20, 340)
         lblTituloPagos.Name = "lblTituloPagos"
         lblTituloPagos.Size = New Size(91, 23)
@@ -380,7 +380,7 @@ Partial Class frmPortalSocio
         ' lblTituloClases
         ' 
         lblTituloClases.AutoSize = True
-        lblTituloClases.Font = New Font("Segoe UI", 10.0F, FontStyle.Bold)
+        lblTituloClases.Font = New Font("Segoe UI", 10F, FontStyle.Bold)
         lblTituloClases.Location = New Point(500, 340)
         lblTituloClases.Name = "lblTituloClases"
         lblTituloClases.Size = New Size(256, 23)
@@ -440,7 +440,7 @@ Partial Class frmPortalSocio
         Controls.Add(pnlCuenta)
         Controls.Add(pnlMembresia)
         Controls.Add(pnlHeader)
-        Font = New Font("Segoe UI", 9.0F)
+        Font = New Font("Segoe UI", 9F)
         Name = "frmPortalSocio"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Portal del socio — Mi membresía"

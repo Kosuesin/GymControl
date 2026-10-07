@@ -48,7 +48,7 @@ Public Class MembresiaDAO
         Dim tabla As New DataTable()
         Const sql As String =
             "SELECT m.id_membresia, m.id_socio, m.id_tipo, tm.nombre AS Tipo, " &
-            "tm.duracion_dias, tm.precio, m.fecha_inicio, m.fecha_vencimiento, " &
+            "tm.duracion_dias, tm.precio, tm.incluye_clases, m.fecha_inicio, m.fecha_vencimiento, " &
             "m.precio_pactado, m.estado FROM membresias m " &
             "INNER JOIN tipos_membresia tm ON m.id_tipo = tm.id_tipo " &
             "WHERE m.id_membresia = @idMembresia LIMIT 1"
