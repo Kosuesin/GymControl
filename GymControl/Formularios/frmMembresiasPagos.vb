@@ -130,7 +130,7 @@ Public Class frmMembresiasPagos
         If Not cargando Then ActualizarDatosTipo()
     End Sub
 
-    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles dptFechaInicio.ValueChanged
         ActualizarFechaVencimiento()
     End Sub
 
@@ -147,7 +147,7 @@ Public Class frmMembresiasPagos
         If fila Is Nothing Then Return
         Dim duracion As Integer
         If Integer.TryParse(fila("duracion_dias").ToString(), duracion) AndAlso duracion > 0 Then
-            dtpFechccaVencimiento.Value = DateTimePicker1.Value.Date.AddDays(duracion)
+            dtpFechaVencimiento.Value = dptFechaInicio.Value.Date.AddDays(duracion)
         End If
     End Sub
 
@@ -155,11 +155,11 @@ Public Class frmMembresiasPagos
         If Not idSocioSeleccionado.HasValue Then MostrarAviso("Debe buscar y seleccionar un socio.") : Return
         Dim fila As DataRowView = TryCast(cboTipoMembresia.SelectedItem, DataRowView)
         If fila Is Nothing Then MostrarAviso("Debe seleccionar un tipo de membresía.") : Return
-        If dtpFechccaVencimiento.Value.Date < DateTimePicker1.Value.Date Then MostrarAviso("La fecha de vencimiento no puede ser anterior a la fecha de inicio.") : Return
+        If dtpFechaVencimiento.Value.Date < dptFechaInicio.Value.Date Then MostrarAviso("La fecha de vencimiento no puede ser anterior a la fecha de inicio.") : Return
 
         Try
             Dim precio As Decimal = Convert.ToDecimal(fila("precio"))
-            If membresiaDAO.InsertarMembresia(idSocioSeleccionado.Value, Convert.ToInt32(fila("id_tipo")), DateTimePicker1.Value.Date, dtpFechccaVencimiento.Value.Date, precio, "ACTIVA") Then
+            If membresiaDAO.InsertarMembresia(idSocioSeleccionado.Value, Convert.ToInt32(fila("id_tipo")), dptFechaInicio.Value.Date, dtpFechaVencimiento.Value.Date, precio, "ACTIVA") Then
                 MessageBox.Show("Membresía registrada correctamente.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 CargarMembresias()
             End If
@@ -224,8 +224,8 @@ Public Class frmMembresiasPagos
         cargando = True
         Try
             cboTipoMembresia.SelectedValue = Convert.ToInt32(fila("id_tipo"))
-            DateTimePicker1.Value = Convert.ToDateTime(fila("FechaInicio")).Date
-            dtpFechccaVencimiento.Value = Convert.ToDateTime(fila("FechaVencimiento")).Date
+            dptFechaInicio.Value = Convert.ToDateTime(fila("FechaInicio")).Date
+            dtpFechaVencimiento.Value = Convert.ToDateTime(fila("FechaVencimiento")).Date
             txtPrecio.Text = Convert.ToDecimal(fila("Precio")).ToString("0.00", CultureInfo.InvariantCulture)
             Dim estado As String = fila("Estado").ToString()
             If cboEstado.Items.Contains(estado) Then cboEstado.SelectedItem = estado

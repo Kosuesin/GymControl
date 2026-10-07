@@ -260,3 +260,7 @@ DROP USER IF EXISTS 'gym_app'@'localhost';
 CREATE USER 'gym_app'@'localhost' IDENTIFIED BY 'Gym#2026app';
 GRANT ALL PRIVILEGES ON gimnasio_db.* TO 'gym_app'@'localhost';
 FLUSH PRIVILEGES;
+
+UPDATE membresias
+SET fecha_vencimiento = '2026-12-31', estado = 'ACTIVA'
+WHERE id_socio IN (1, 2, 3);

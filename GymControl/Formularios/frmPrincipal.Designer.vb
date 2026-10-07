@@ -22,8 +22,8 @@ Partial Class frmPrincipal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         pnlNavegacion = New Panel()
         btnCerrarSesion = New Button()
         btnBitacora = New Button()
@@ -115,10 +115,10 @@ Partial Class frmPrincipal
         pnlNavegacion.Controls.Add(btnSocios)
         pnlNavegacion.Controls.Add(btnInicio)
         pnlNavegacion.Dock = DockStyle.Left
-        pnlNavegacion.Location = New Point(0, 24)
+        pnlNavegacion.Location = New Point(0, 28)
         pnlNavegacion.Name = "pnlNavegacion"
         pnlNavegacion.Padding = New Padding(4)
-        pnlNavegacion.Size = New Size(217, 626)
+        pnlNavegacion.Size = New Size(217, 622)
         pnlNavegacion.TabIndex = 0
         ' 
         ' btnCerrarSesion
@@ -130,7 +130,7 @@ Partial Class frmPrincipal
         btnCerrarSesion.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(70), CByte(96), CByte(122))
         btnCerrarSesion.FlatStyle = FlatStyle.Flat
         btnCerrarSesion.ForeColor = Color.White
-        btnCerrarSesion.Location = New Point(6, 592)
+        btnCerrarSesion.Location = New Point(6, 588)
         btnCerrarSesion.Name = "btnCerrarSesion"
         btnCerrarSesion.Padding = New Padding(10, 0, 0, 0)
         btnCerrarSesion.Size = New Size(205, 30)
@@ -325,7 +325,7 @@ Partial Class frmPrincipal
         lblTotalClasesHoy.ForeColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
         lblTotalClasesHoy.Location = New Point(10, 25)
         lblTotalClasesHoy.Name = "lblTotalClasesHoy"
-        lblTotalClasesHoy.Size = New Size(28, 32)
+        lblTotalClasesHoy.Size = New Size(35, 41)
         lblTotalClasesHoy.TabIndex = 1
         lblTotalClasesHoy.Text = "0"
         ' 
@@ -336,7 +336,7 @@ Partial Class frmPrincipal
         lblClasesHoy.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblClasesHoy.Location = New Point(10, 8)
         lblClasesHoy.Name = "lblClasesHoy"
-        lblClasesHoy.Size = New Size(132, 13)
+        lblClasesHoy.Size = New Size(159, 19)
         lblClasesHoy.TabIndex = 0
         lblClasesHoy.Text = "Clases programadas hoy"
         ' 
@@ -359,7 +359,7 @@ Partial Class frmPrincipal
         lblTotalIngresos.ForeColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
         lblTotalIngresos.Location = New Point(10, 25)
         lblTotalIngresos.Name = "lblTotalIngresos"
-        lblTotalIngresos.Size = New Size(91, 30)
+        lblTotalIngresos.Size = New Size(112, 37)
         lblTotalIngresos.TabIndex = 1
         lblTotalIngresos.Text = "C$ 0.00"
         ' 
@@ -370,7 +370,7 @@ Partial Class frmPrincipal
         lblIngresosMes.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblIngresosMes.Location = New Point(10, 8)
         lblIngresosMes.Name = "lblIngresosMes"
-        lblIngresosMes.Size = New Size(93, 13)
+        lblIngresosMes.Size = New Size(112, 19)
         lblIngresosMes.TabIndex = 0
         lblIngresosMes.Text = "Ingresos del mes"
         ' 
@@ -393,7 +393,7 @@ Partial Class frmPrincipal
         lblTotalPorVencer.ForeColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
         lblTotalPorVencer.Location = New Point(10, 25)
         lblTotalPorVencer.Name = "lblTotalPorVencer"
-        lblTotalPorVencer.Size = New Size(28, 32)
+        lblTotalPorVencer.Size = New Size(35, 41)
         lblTotalPorVencer.TabIndex = 1
         lblTotalPorVencer.Text = "0"
         ' 
@@ -404,7 +404,7 @@ Partial Class frmPrincipal
         lblMembresiasPorVencer.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblMembresiasPorVencer.Location = New Point(10, 8)
         lblMembresiasPorVencer.Name = "lblMembresiasPorVencer"
-        lblMembresiasPorVencer.Size = New Size(125, 13)
+        lblMembresiasPorVencer.Size = New Size(152, 19)
         lblMembresiasPorVencer.TabIndex = 0
         lblMembresiasPorVencer.Text = "Membresías por vencer"
         ' 
@@ -427,7 +427,7 @@ Partial Class frmPrincipal
         lblTotalSocios.ForeColor = Color.FromArgb(CByte(79), CByte(124), CByte(172))
         lblTotalSocios.Location = New Point(10, 25)
         lblTotalSocios.Name = "lblTotalSocios"
-        lblTotalSocios.Size = New Size(28, 32)
+        lblTotalSocios.Size = New Size(35, 41)
         lblTotalSocios.TabIndex = 1
         lblTotalSocios.Text = "0"
         ' 
@@ -438,7 +438,7 @@ Partial Class frmPrincipal
         lblSociosActivos.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSociosActivos.Location = New Point(10, 8)
         lblSociosActivos.Name = "lblSociosActivos"
-        lblSociosActivos.Size = New Size(78, 13)
+        lblSociosActivos.Size = New Size(93, 19)
         lblSociosActivos.TabIndex = 0
         lblSociosActivos.Text = "Socios activos"
         ' 
@@ -452,7 +452,7 @@ Partial Class frmPrincipal
         dgvPorVencer.BackgroundColor = Color.White
         dgvPorVencer.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvPorVencer.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        dgvPorVencer.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
+        dgvPorVencer.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         dgvPorVencer.ColumnHeadersHeight = 32
         dgvPorVencer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         dgvPorVencer.EnableHeadersVisualStyles = False
@@ -462,9 +462,10 @@ Partial Class frmPrincipal
         dgvPorVencer.ReadOnly = True
         dgvPorVencer.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         dgvPorVencer.RowHeadersVisible = False
+        dgvPorVencer.RowHeadersWidth = 51
         dgvPorVencer.RowTemplate.Height = 28
         dgvPorVencer.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvPorVencer.Size = New Size(560, 275)
+        dgvPorVencer.Size = New Size(455, 275)
         dgvPorVencer.TabIndex = 2
         ' 
         ' lblTituloPorVencer
@@ -474,7 +475,7 @@ Partial Class frmPrincipal
         lblTituloPorVencer.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
         lblTituloPorVencer.Location = New Point(220, 170)
         lblTituloPorVencer.Name = "lblTituloPorVencer"
-        lblTituloPorVencer.Size = New Size(225, 20)
+        lblTituloPorVencer.Size = New Size(285, 25)
         lblTituloPorVencer.TabIndex = 3
         lblTituloPorVencer.Text = "Membresías próximas a vencer"
         ' 
@@ -483,24 +484,25 @@ Partial Class frmPrincipal
         dgvClasesHoy.AllowUserToAddRows = False
         dgvClasesHoy.AllowUserToDeleteRows = False
         dgvClasesHoy.AllowUserToResizeRows = False
-        dgvClasesHoy.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Right
+        dgvClasesHoy.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgvClasesHoy.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvClasesHoy.BackgroundColor = Color.White
         dgvClasesHoy.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         dgvClasesHoy.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
-        dgvClasesHoy.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        dgvClasesHoy.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         dgvClasesHoy.ColumnHeadersHeight = 32
         dgvClasesHoy.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         dgvClasesHoy.EnableHeadersVisualStyles = False
-        dgvClasesHoy.Location = New Point(800, 195)
+        dgvClasesHoy.Location = New Point(681, 195)
         dgvClasesHoy.MultiSelect = False
         dgvClasesHoy.Name = "dgvClasesHoy"
         dgvClasesHoy.ReadOnly = True
         dgvClasesHoy.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         dgvClasesHoy.RowHeadersVisible = False
+        dgvClasesHoy.RowHeadersWidth = 51
         dgvClasesHoy.RowTemplate.Height = 28
         dgvClasesHoy.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        dgvClasesHoy.Size = New Size(280, 275)
+        dgvClasesHoy.Size = New Size(399, 275)
         dgvClasesHoy.TabIndex = 4
         ' 
         ' lblTituloClasesHoy
@@ -511,7 +513,7 @@ Partial Class frmPrincipal
         lblTituloClasesHoy.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
         lblTituloClasesHoy.Location = New Point(800, 170)
         lblTituloClasesHoy.Name = "lblTituloClasesHoy"
-        lblTituloClasesHoy.Size = New Size(103, 20)
+        lblTituloClasesHoy.Size = New Size(130, 25)
         lblTituloClasesHoy.TabIndex = 5
         lblTituloClasesHoy.Text = "Clases de hoy"
         ' 
@@ -521,9 +523,9 @@ Partial Class frmPrincipal
         lblTituloPanel.BackColor = Color.Transparent
         lblTituloPanel.Font = New Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         lblTituloPanel.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
-        lblTituloPanel.Location = New Point(220, 32)
+        lblTituloPanel.Location = New Point(223, 22)
         lblTituloPanel.Name = "lblTituloPanel"
-        lblTituloPanel.Size = New Size(181, 30)
+        lblTituloPanel.Size = New Size(226, 37)
         lblTituloPanel.TabIndex = 13
         lblTituloPanel.Text = "Panel de control"
         ' 
@@ -535,7 +537,7 @@ Partial Class frmPrincipal
         lblAccesosRapidos.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
         lblAccesosRapidos.Location = New Point(220, 495)
         lblAccesosRapidos.Name = "lblAccesosRapidos"
-        lblAccesosRapidos.Size = New Size(121, 20)
+        lblAccesosRapidos.Size = New Size(153, 25)
         lblAccesosRapidos.TabIndex = 6
         lblAccesosRapidos.Text = "Accesos rápidos"
         ' 
@@ -551,7 +553,7 @@ Partial Class frmPrincipal
         btnNuevoSocio.Location = New Point(220, 520)
         btnNuevoSocio.Name = "btnNuevoSocio"
         btnNuevoSocio.Padding = New Padding(12, 4, 12, 4)
-        btnNuevoSocio.Size = New Size(100, 32)
+        btnNuevoSocio.Size = New Size(100, 43)
         btnNuevoSocio.TabIndex = 7
         btnNuevoSocio.Text = "Nuevo socio"
         btnNuevoSocio.UseVisualStyleBackColor = False
@@ -566,7 +568,7 @@ Partial Class frmPrincipal
         btnRegistrarPago.Location = New Point(333, 520)
         btnRegistrarPago.Name = "btnRegistrarPago"
         btnRegistrarPago.Padding = New Padding(10, 4, 10, 4)
-        btnRegistrarPago.Size = New Size(128, 32)
+        btnRegistrarPago.Size = New Size(128, 43)
         btnRegistrarPago.TabIndex = 8
         btnRegistrarPago.Text = "Registrar pago"
         btnRegistrarPago.UseVisualStyleBackColor = False
@@ -581,7 +583,7 @@ Partial Class frmPrincipal
         btnRenovarMembresia.Location = New Point(473, 520)
         btnRenovarMembresia.Name = "btnRenovarMembresia"
         btnRenovarMembresia.Padding = New Padding(10, 4, 10, 4)
-        btnRenovarMembresia.Size = New Size(156, 32)
+        btnRenovarMembresia.Size = New Size(156, 43)
         btnRenovarMembresia.TabIndex = 9
         btnRenovarMembresia.Text = "Renovar membresía"
         btnRenovarMembresia.UseVisualStyleBackColor = False
@@ -596,7 +598,7 @@ Partial Class frmPrincipal
         btnVerHorarios.Location = New Point(643, 520)
         btnVerHorarios.Name = "btnVerHorarios"
         btnVerHorarios.Padding = New Padding(10, 4, 10, 4)
-        btnVerHorarios.Size = New Size(128, 32)
+        btnVerHorarios.Size = New Size(128, 43)
         btnVerHorarios.TabIndex = 10
         btnVerHorarios.Text = "Ver horarios"
         btnVerHorarios.UseVisualStyleBackColor = False
@@ -605,11 +607,12 @@ Partial Class frmPrincipal
         ' 
         stsSesion.BackColor = Color.FromArgb(CByte(255), CByte(255), CByte(255))
         stsSesion.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
+        stsSesion.ImageScalingSize = New Size(20, 20)
         stsSesion.Items.AddRange(New ToolStripItem() {lblSesionUsuario, lblSesionRol, lblSesionServidor, lblSesionFechaHora})
-        stsSesion.Location = New Point(217, 628)
+        stsSesion.Location = New Point(217, 624)
         stsSesion.Name = "stsSesion"
         stsSesion.Padding = New Padding(10, 0, 10, 0)
-        stsSesion.Size = New Size(883, 22)
+        stsSesion.Size = New Size(883, 26)
         stsSesion.SizingGrip = False
         stsSesion.TabIndex = 11
         stsSesion.Text = "StatusStrip1"
@@ -618,7 +621,7 @@ Partial Class frmPrincipal
         ' 
         lblSesionUsuario.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSesionUsuario.Name = "lblSesionUsuario"
-        lblSesionUsuario.Size = New Size(58, 17)
+        lblSesionUsuario.Size = New Size(72, 20)
         lblSesionUsuario.Text = "Usuario: -"
         ' 
         ' lblSesionRol
@@ -626,7 +629,7 @@ Partial Class frmPrincipal
         lblSesionRol.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSesionRol.Margin = New Padding(12, 3, 0, 2)
         lblSesionRol.Name = "lblSesionRol"
-        lblSesionRol.Size = New Size(35, 17)
+        lblSesionRol.Size = New Size(44, 21)
         lblSesionRol.Text = "Rol: -"
         ' 
         ' lblSesionServidor
@@ -634,14 +637,14 @@ Partial Class frmPrincipal
         lblSesionServidor.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSesionServidor.Margin = New Padding(12, 3, 0, 2)
         lblSesionServidor.Name = "lblSesionServidor"
-        lblSesionServidor.Size = New Size(61, 17)
+        lblSesionServidor.Size = New Size(77, 21)
         lblSesionServidor.Text = "Servidor: -"
         ' 
         ' lblSesionFechaHora
         ' 
         lblSesionFechaHora.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSesionFechaHora.Name = "lblSesionFechaHora"
-        lblSesionFechaHora.Size = New Size(685, 17)
+        lblSesionFechaHora.Size = New Size(646, 20)
         lblSesionFechaHora.Spring = True
         lblSesionFechaHora.Text = "Fecha-hora: -"
         lblSesionFechaHora.TextAlign = ContentAlignment.MiddleRight
@@ -651,11 +654,12 @@ Partial Class frmPrincipal
         mnuPrincipal.BackColor = Color.White
         mnuPrincipal.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         mnuPrincipal.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
+        mnuPrincipal.ImageScalingSize = New Size(20, 20)
         mnuPrincipal.Items.AddRange(New ToolStripItem() {mnuArchivo, mnuSocios, mnuMmbresias, mnuPagos, mnuInstructores, mnuActividadesSalas, mnuHorarios, mnuUsuarios, mnuBitacoraAccesos, mnuSeguridad})
         mnuPrincipal.Location = New Point(0, 0)
         mnuPrincipal.Name = "mnuPrincipal"
         mnuPrincipal.RenderMode = ToolStripRenderMode.Professional
-        mnuPrincipal.Size = New Size(1100, 24)
+        mnuPrincipal.Size = New Size(1100, 28)
         mnuPrincipal.TabIndex = 12
         mnuPrincipal.Text = "MenuStrip1"
         ' 
@@ -663,154 +667,154 @@ Partial Class frmPrincipal
         ' 
         mnuArchivo.DropDownItems.AddRange(New ToolStripItem() {mnuCerrarSesion, mnuSalir})
         mnuArchivo.Name = "mnuArchivo"
-        mnuArchivo.Size = New Size(60, 20)
+        mnuArchivo.Size = New Size(73, 24)
         mnuArchivo.Text = "Archivo"
         ' 
         ' mnuCerrarSesion
         ' 
         mnuCerrarSesion.Name = "mnuCerrarSesion"
-        mnuCerrarSesion.Size = New Size(142, 22)
+        mnuCerrarSesion.Size = New Size(177, 26)
         mnuCerrarSesion.Text = "Cerrar sesión"
         ' 
         ' mnuSalir
         ' 
         mnuSalir.Name = "mnuSalir"
-        mnuSalir.Size = New Size(142, 22)
+        mnuSalir.Size = New Size(177, 26)
         mnuSalir.Text = "Salir"
         ' 
         ' mnuSocios
         ' 
         mnuSocios.DropDownItems.AddRange(New ToolStripItem() {mnuGestionarSocios, mnuNuevoSocio})
         mnuSocios.Name = "mnuSocios"
-        mnuSocios.Size = New Size(53, 20)
+        mnuSocios.Size = New Size(66, 24)
         mnuSocios.Text = "Socios"
         ' 
         ' mnuGestionarSocios
         ' 
         mnuGestionarSocios.Name = "mnuGestionarSocios"
-        mnuGestionarSocios.Size = New Size(160, 22)
+        mnuGestionarSocios.Size = New Size(200, 26)
         mnuGestionarSocios.Text = "Gestionar socios"
         ' 
         ' mnuNuevoSocio
         ' 
         mnuNuevoSocio.Name = "mnuNuevoSocio"
-        mnuNuevoSocio.Size = New Size(160, 22)
+        mnuNuevoSocio.Size = New Size(200, 26)
         mnuNuevoSocio.Text = "Nuevo socio"
         ' 
         ' mnuMmbresias
         ' 
         mnuMmbresias.DropDownItems.AddRange(New ToolStripItem() {mnuTiposMembresia, mnuMembresiasPagos})
         mnuMmbresias.Name = "mnuMmbresias"
-        mnuMmbresias.Size = New Size(83, 20)
+        mnuMmbresias.Size = New Size(103, 24)
         mnuMmbresias.Text = "Membresías"
         ' 
         ' mnuTiposMembresia
         ' 
         mnuTiposMembresia.Name = "mnuTiposMembresia"
-        mnuTiposMembresia.Size = New Size(186, 22)
+        mnuTiposMembresia.Size = New Size(233, 26)
         mnuTiposMembresia.Text = "Tipos de membresías"
         ' 
         ' mnuMembresiasPagos
         ' 
         mnuMembresiasPagos.Name = "mnuMembresiasPagos"
-        mnuMembresiasPagos.Size = New Size(186, 22)
+        mnuMembresiasPagos.Size = New Size(233, 26)
         mnuMembresiasPagos.Text = "Membresías y pagos"
         ' 
         ' mnuPagos
         ' 
         mnuPagos.DropDownItems.AddRange(New ToolStripItem() {mnuRegistrarPago})
         mnuPagos.Name = "mnuPagos"
-        mnuPagos.Size = New Size(51, 20)
+        mnuPagos.Size = New Size(62, 24)
         mnuPagos.Text = "Pagos"
         ' 
         ' mnuRegistrarPago
         ' 
         mnuRegistrarPago.Name = "mnuRegistrarPago"
-        mnuRegistrarPago.Size = New Size(150, 22)
+        mnuRegistrarPago.Size = New Size(190, 26)
         mnuRegistrarPago.Text = "Registrat pago"
         ' 
         ' mnuInstructores
         ' 
         mnuInstructores.DropDownItems.AddRange(New ToolStripItem() {mnuGestionarInstructores})
         mnuInstructores.Name = "mnuInstructores"
-        mnuInstructores.Size = New Size(81, 20)
+        mnuInstructores.Size = New Size(99, 24)
         mnuInstructores.Text = "Instructores"
         ' 
         ' mnuGestionarInstructores
         ' 
         mnuGestionarInstructores.Name = "mnuGestionarInstructores"
-        mnuGestionarInstructores.Size = New Size(189, 22)
+        mnuGestionarInstructores.Size = New Size(235, 26)
         mnuGestionarInstructores.Text = "Gestionar instructores"
         ' 
         ' mnuActividadesSalas
         ' 
         mnuActividadesSalas.DropDownItems.AddRange(New ToolStripItem() {mnuActividades, mnuSalas})
         mnuActividadesSalas.Name = "mnuActividadesSalas"
-        mnuActividadesSalas.Size = New Size(117, 20)
+        mnuActividadesSalas.Size = New Size(147, 24)
         mnuActividadesSalas.Text = "Actividades y salas"
         ' 
         ' mnuActividades
         ' 
         mnuActividades.Name = "mnuActividades"
-        mnuActividades.Size = New Size(135, 22)
+        mnuActividades.Size = New Size(169, 26)
         mnuActividades.Text = "Actividades"
         ' 
         ' mnuSalas
         ' 
         mnuSalas.Name = "mnuSalas"
-        mnuSalas.Size = New Size(135, 22)
+        mnuSalas.Size = New Size(169, 26)
         mnuSalas.Text = "Salas"
         ' 
         ' mnuHorarios
         ' 
         mnuHorarios.DropDownItems.AddRange(New ToolStripItem() {mnuProgramacionSemanal})
         mnuHorarios.Name = "mnuHorarios"
-        mnuHorarios.Size = New Size(64, 20)
+        mnuHorarios.Size = New Size(80, 24)
         mnuHorarios.Text = "Horarios"
         ' 
         ' mnuProgramacionSemanal
         ' 
         mnuProgramacionSemanal.Name = "mnuProgramacionSemanal"
-        mnuProgramacionSemanal.Size = New Size(196, 22)
+        mnuProgramacionSemanal.Size = New Size(244, 26)
         mnuProgramacionSemanal.Text = "Programación semanal"
         ' 
         ' mnuUsuarios
         ' 
         mnuUsuarios.DropDownItems.AddRange(New ToolStripItem() {mnuGestionarUsuarios})
         mnuUsuarios.Name = "mnuUsuarios"
-        mnuUsuarios.Size = New Size(64, 20)
+        mnuUsuarios.Size = New Size(79, 24)
         mnuUsuarios.Text = "Usuarios"
         ' 
         ' mnuGestionarUsuarios
         ' 
         mnuGestionarUsuarios.Name = "mnuGestionarUsuarios"
-        mnuGestionarUsuarios.Size = New Size(171, 22)
+        mnuGestionarUsuarios.Size = New Size(213, 26)
         mnuGestionarUsuarios.Text = "Gestionar usuarios"
         ' 
         ' mnuBitacoraAccesos
         ' 
         mnuBitacoraAccesos.DropDownItems.AddRange(New ToolStripItem() {mnuConsultarBitacora})
         mnuBitacoraAccesos.Name = "mnuBitacoraAccesos"
-        mnuBitacoraAccesos.Size = New Size(122, 20)
+        mnuBitacoraAccesos.Size = New Size(154, 24)
         mnuBitacoraAccesos.Text = "Bitácora de accesos"
         ' 
         ' mnuConsultarBitacora
         ' 
         mnuConsultarBitacora.Name = "mnuConsultarBitacora"
-        mnuConsultarBitacora.Size = New Size(171, 22)
+        mnuConsultarBitacora.Size = New Size(213, 26)
         mnuConsultarBitacora.Text = "Consultar bitácora"
         ' 
         ' mnuSeguridad
         ' 
         mnuSeguridad.DropDownItems.AddRange(New ToolStripItem() {mnuCambiarContrasena})
         mnuSeguridad.Name = "mnuSeguridad"
-        mnuSeguridad.Size = New Size(72, 20)
+        mnuSeguridad.Size = New Size(91, 24)
         mnuSeguridad.Text = "Seguridad"
         ' 
         ' mnuCambiarContrasena
         ' 
         mnuCambiarContrasena.Name = "mnuCambiarContrasena"
-        mnuCambiarContrasena.Size = New Size(180, 22)
+        mnuCambiarContrasena.Size = New Size(224, 26)
         mnuCambiarContrasena.Text = "Cambiar contraseña"
         ' 
         ' lblSubtituloPanel
@@ -819,18 +823,17 @@ Partial Class frmPrincipal
         lblSubtituloPanel.ForeColor = Color.FromArgb(CByte(96), CByte(125), CByte(139))
         lblSubtituloPanel.Location = New Point(223, 59)
         lblSubtituloPanel.Name = "lblSubtituloPanel"
-        lblSubtituloPanel.Size = New Size(264, 15)
+        lblSubtituloPanel.Size = New Size(337, 20)
         lblSubtituloPanel.TabIndex = 14
         lblSubtituloPanel.Text = "Resumen del día, lunes 21 de septiembre de 2026"
         ' 
         ' frmPrincipal
         ' 
-        AutoScaleDimensions = New SizeF(7F, 15F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(244), CByte(246), CByte(248))
         ClientSize = New Size(1100, 650)
         Controls.Add(lblSubtituloPanel)
-        Controls.Add(lblTituloPanel)
         Controls.Add(btnVerHorarios)
         Controls.Add(btnRenovarMembresia)
         Controls.Add(btnRegistrarPago)
@@ -844,6 +847,7 @@ Partial Class frmPrincipal
         Controls.Add(pnlIndicadores)
         Controls.Add(pnlNavegacion)
         Controls.Add(mnuPrincipal)
+        Controls.Add(lblTituloPanel)
         Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         MainMenuStrip = mnuPrincipal
         Name = "frmPrincipal"
