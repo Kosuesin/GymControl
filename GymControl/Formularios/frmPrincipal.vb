@@ -550,4 +550,26 @@ Public Class frmPrincipal
         End Using
 
     End Sub
+
+    Private Sub mnuActividades_Click(
+    sender As Object,
+    e As EventArgs
+) Handles mnuActividades.Click
+
+        Using formulario As New frmActividades()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
+
+    Private Sub mnuSalas_Click(
+        sender As Object,
+        e As EventArgs
+    ) Handles mnuSalas.Click
+
+        Using formulario As New frmSalas()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
 End Class
