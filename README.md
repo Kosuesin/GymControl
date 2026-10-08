@@ -114,3 +114,11 @@ GymControl/
 │   └── HorarioDAO
 │
 └── GymControl.sln
+```
+## Usuarios e inicio de sesion.
+Estos son los usuarios con su respectiva contrasena en texto plano ya que en la base de datos estan encriptadas:
+- Usuario: admin, Contraseña: Admin123*
+- Usuario: recepcion01, Contraseña: Recep2024!
+- Usuario: inst_javier, Contraseña: Javier2024!
+- Usuario: socio_carlos, Contraseña: Carlos2024!
+- Usuario: usuario_bloqueado, Contraseña: Bloqueado123*
