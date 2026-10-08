@@ -112,7 +112,7 @@ Partial Class frmHorarios
         dgvHorario.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Control
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
@@ -121,7 +121,7 @@ Partial Class frmHorarios
         dgvHorario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -373,7 +373,7 @@ Partial Class frmHorarios
         grpLeyenda.TabStop = False
         grpLeyenda.Text = "Actividades"
         ' 
-        ' frmHorarios1
+        ' frmHorarios
         ' 
         ClientSize = New Size(1150, 770)
         Controls.Add(grpLeyenda)
@@ -385,9 +385,9 @@ Partial Class frmHorarios
         Controls.Add(lblFiltroSala)
         Controls.Add(cboFiltroInstructor)
         Controls.Add(lblFiltroInstructor)
-        Font = New Font("Segoe UI", 9.0F)
+        Font = New Font("Segoe UI", 9F)
         MinimumSize = New Size(1000, 700)
-        Name = "frmHorarios1"
+        Name = "frmHorarios"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Horarios de instructores"
         CType(dgvHorario, ComponentModel.ISupportInitialize).EndInit()
