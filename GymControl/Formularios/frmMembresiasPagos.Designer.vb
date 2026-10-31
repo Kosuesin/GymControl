@@ -54,8 +54,10 @@ Partial Class frmMembresiasPagos
         lblHistorialMembresias = New Label()
         grpPago = New GroupBox()
         btnImprimirRecibo = New Button()
+        btnConstancia = New Button()
         btnAnularPago = New Button()
         btnRegistrarPago = New Button()
+        chkImprimirAlRegistrar = New CheckBox()
         txtObservacion = New TextBox()
         lblObservacion = New Label()
         txtReferencia = New TextBox()
@@ -408,8 +410,10 @@ Partial Class frmMembresiasPagos
         grpPago.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         grpPago.BackColor = Color.White
         grpPago.Controls.Add(btnImprimirRecibo)
+        grpPago.Controls.Add(btnConstancia)
         grpPago.Controls.Add(btnAnularPago)
         grpPago.Controls.Add(btnRegistrarPago)
+        grpPago.Controls.Add(chkImprimirAlRegistrar)
         grpPago.Controls.Add(txtObservacion)
         grpPago.Controls.Add(lblObservacion)
         grpPago.Controls.Add(txtReferencia)
@@ -447,13 +451,31 @@ Partial Class frmMembresiasPagos
         btnImprimirRecibo.FlatStyle = FlatStyle.Flat
         btnImprimirRecibo.Font = New Font("Segoe UI", 9F)
         btnImprimirRecibo.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
-        btnImprimirRecibo.Location = New Point(393, 336)
+        btnImprimirRecibo.Location = New Point(297, 336)
         btnImprimirRecibo.Margin = New Padding(3, 4, 3, 4)
         btnImprimirRecibo.Name = "btnImprimirRecibo"
-        btnImprimirRecibo.Size = New Size(171, 48)
+        btnImprimirRecibo.Size = New Size(126, 48)
         btnImprimirRecibo.TabIndex = 18
-        btnImprimirRecibo.Text = "Imprimir recibo"
+        btnImprimirRecibo.Text = "Recibo"
         btnImprimirRecibo.UseVisualStyleBackColor = False
+        ' 
+        ' btnConstancia
+        ' 
+        btnConstancia.BackColor = Color.FromArgb(CByte(232), CByte(237), CByte(240))
+        btnConstancia.Cursor = Cursors.Hand
+        btnConstancia.FlatAppearance.BorderSize = 0
+        btnConstancia.FlatAppearance.MouseDownBackColor = Color.FromArgb(CByte(210), CByte(221), CByte(227))
+        btnConstancia.FlatAppearance.MouseOverBackColor = Color.FromArgb(CByte(222), CByte(229), CByte(234))
+        btnConstancia.FlatStyle = FlatStyle.Flat
+        btnConstancia.Font = New Font("Segoe UI", 9F)
+        btnConstancia.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        btnConstancia.Location = New Point(437, 336)
+        btnConstancia.Margin = New Padding(3, 4, 3, 4)
+        btnConstancia.Name = "btnConstancia"
+        btnConstancia.Size = New Size(126, 48)
+        btnConstancia.TabIndex = 19
+        btnConstancia.Text = "Constancia"
+        btnConstancia.UseVisualStyleBackColor = False
         ' 
         ' btnAnularPago
         ' 
@@ -465,10 +487,10 @@ Partial Class frmMembresiasPagos
         btnAnularPago.FlatStyle = FlatStyle.Flat
         btnAnularPago.Font = New Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         btnAnularPago.ForeColor = Color.White
-        btnAnularPago.Location = New Point(206, 336)
+        btnAnularPago.Location = New Point(158, 336)
         btnAnularPago.Margin = New Padding(3, 4, 3, 4)
         btnAnularPago.Name = "btnAnularPago"
-        btnAnularPago.Size = New Size(171, 48)
+        btnAnularPago.Size = New Size(126, 48)
         btnAnularPago.TabIndex = 17
         btnAnularPago.Text = "Anular pago"
         btnAnularPago.UseVisualStyleBackColor = False
@@ -486,10 +508,22 @@ Partial Class frmMembresiasPagos
         btnRegistrarPago.Location = New Point(18, 336)
         btnRegistrarPago.Margin = New Padding(3, 4, 3, 4)
         btnRegistrarPago.Name = "btnRegistrarPago"
-        btnRegistrarPago.Size = New Size(171, 48)
+        btnRegistrarPago.Size = New Size(126, 48)
         btnRegistrarPago.TabIndex = 16
         btnRegistrarPago.Text = "Registrar pago"
         btnRegistrarPago.UseVisualStyleBackColor = False
+        ' 
+        ' chkImprimirAlRegistrar
+        ' 
+        chkImprimirAlRegistrar.AutoSize = True
+        chkImprimirAlRegistrar.Font = New Font("Segoe UI", 8.25F)
+        chkImprimirAlRegistrar.ForeColor = Color.FromArgb(CByte(55), CByte(71), CByte(79))
+        chkImprimirAlRegistrar.Location = New Point(18, 314)
+        chkImprimirAlRegistrar.Name = "chkImprimirAlRegistrar"
+        chkImprimirAlRegistrar.Size = New Size(220, 20)
+        chkImprimirAlRegistrar.TabIndex = 20
+        chkImprimirAlRegistrar.Text = "Imprimir recibo al registrar el pago"
+        chkImprimirAlRegistrar.UseVisualStyleBackColor = True
         ' 
         ' txtObservacion
         ' 
@@ -868,8 +902,10 @@ Partial Class frmMembresiasPagos
     Friend WithEvents txtReferencia As TextBox
     Friend WithEvents lblReferencia As Label
     Friend WithEvents btnImprimirRecibo As Button
+    Friend WithEvents btnConstancia As Button
     Friend WithEvents btnAnularPago As Button
     Friend WithEvents btnRegistrarPago As Button
+    Friend WithEvents chkImprimirAlRegistrar As CheckBox
     Friend WithEvents txtObservacion As TextBox
     Friend WithEvents lblObservacion As Label
     Friend WithEvents lblPagosMembresia As Label

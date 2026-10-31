@@ -281,12 +281,19 @@ Public Class frmMembresiasPagos
             Dim totales As DataRow = pagoDAO.ObtenerTotalesPago(idMembresiaPagoSeleccionada.Value)
             Dim saldo As Decimal = If(totales Is Nothing, 0D, Convert.ToDecimal(totales("Total")) - Convert.ToDecimal(totales("Pagado")))
             If monto > saldo Then MostrarAviso("El monto no puede superar el saldo pendiente.") : Return
-            If pagoDAO.InsertarPago(idMembresiaPagoSeleccionada.Value, Sesion.IdUsuario, monto, cboMetodo.SelectedItem.ToString(), txtReferencia.Text, txtObservacion.Text) Then
+            Dim idNuevoPago As Integer = pagoDAO.InsertarPagoConId(idMembresiaPagoSeleccionada.Value, Sesion.IdUsuario, monto, cboMetodo.SelectedItem.ToString(), txtReferencia.Text, txtObservacion.Text)
+
+            If idNuevoPago > 0 Then
                 MessageBox.Show("Pago registrado correctamente.", "GymControl", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 txtMonto.Clear() : txtReferencia.Clear() : txtObservacion.Clear()
                 CargarDatosPago()
                 If idSocioSeleccionado.HasValue Then CargarMembresias(idMembresiaPagoSeleccionada)
+
+                If chkImprimirAlRegistrar.Checked Then
+                    ImprimirReciboPago(idNuevoPago, vistaPrevia:=False)
+                End If
             End If
+
         Catch ex As Exception
             MostrarError("No se pudo registrar el pago.", ex)
         End Try
@@ -304,6 +311,67 @@ Public Class frmMembresiasPagos
         Catch ex As Exception
             MostrarError("No se pudo anular el pago.", ex)
         End Try
+    End Sub
+
+    Private Sub btnImprimirRecibo_Click(sender As Object, e As EventArgs) Handles btnImprimirRecibo.Click
+
+        If dgvPagos.CurrentRow Is Nothing OrElse dgvPagos.CurrentRow.Tag Is Nothing Then
+            MostrarAviso("Seleccione un pago de la lista para imprimir el recibo.")
+            Return
+        End If
+
+        ImprimirReciboPago(Convert.ToInt32(dgvPagos.CurrentRow.Tag), vistaPrevia:=True)
+
+    End Sub
+
+    Private Sub btnConstancia_Click(sender As Object, e As EventArgs) Handles btnConstancia.Click
+
+        If Not idSocioSeleccionado.HasValue Then
+            MostrarAviso("Debe buscar y seleccionar un socio.")
+            Return
+        End If
+
+        Try
+            Dim datos As DataRow = membresiaDAO.ObtenerConstanciaPorSocio(idSocioSeleccionado.Value)
+
+            If datos Is Nothing Then
+                MostrarAviso("El socio seleccionado no tiene una membresía activa y vigente.")
+                Return
+            End If
+
+            Using constancia As New ConstanciaMembresia(datos)
+                constancia.Imprimir(vistaPrevia:=True, propietario:=Me)
+            End Using
+
+        Catch ex As Exception
+            MostrarError("No se pudo generar la constancia de membresía.", ex)
+        End Try
+
+    End Sub
+
+    ''' <summary>
+    ''' Genera el recibo (R01) de un pago. Se usa desde el botón
+    ''' "Recibo" y también al registrar un pago con la casilla
+    ''' "Imprimir recibo al registrar el pago" marcada.
+    ''' </summary>
+    Private Sub ImprimirReciboPago(idPago As Integer, vistaPrevia As Boolean)
+
+        Try
+            Dim datos As DataRow = pagoDAO.ObtenerPagoParaRecibo(idPago)
+
+            If datos Is Nothing Then
+                MostrarAviso("No se encontró el pago seleccionado.")
+                Return
+            End If
+
+            Using recibo As New ReciboPago(datos)
+                recibo.Imprimir(vistaPrevia, Me)
+            End Using
+
+        Catch ex As Exception
+            MostrarError("No se pudo generar el recibo de pago.", ex)
+        End Try
+
     End Sub
 
     Private Function ObtenerIdMembresiaGrid() As Integer?

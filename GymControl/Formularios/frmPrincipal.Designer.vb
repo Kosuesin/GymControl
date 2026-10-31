@@ -88,6 +88,8 @@ Partial Class frmPrincipal
         mnuConsultarBitacora = New ToolStripMenuItem()
         mnuSeguridad = New ToolStripMenuItem()
         mnuCambiarContrasena = New ToolStripMenuItem()
+        mnuReportes = New ToolStripMenuItem()
+        mnuCentroReportes = New ToolStripMenuItem()
         lblSubtituloPanel = New Label()
         pnlNavegacion.SuspendLayout()
         pnlIndicadores.SuspendLayout()
@@ -655,7 +657,7 @@ Partial Class frmPrincipal
         mnuPrincipal.Font = New Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         mnuPrincipal.ForeColor = Color.FromArgb(CByte(38), CByte(50), CByte(56))
         mnuPrincipal.ImageScalingSize = New Size(20, 20)
-        mnuPrincipal.Items.AddRange(New ToolStripItem() {mnuArchivo, mnuSocios, mnuMmbresias, mnuPagos, mnuInstructores, mnuActividadesSalas, mnuHorarios, mnuUsuarios, mnuBitacoraAccesos, mnuSeguridad})
+        mnuPrincipal.Items.AddRange(New ToolStripItem() {mnuArchivo, mnuSocios, mnuMmbresias, mnuPagos, mnuInstructores, mnuActividadesSalas, mnuHorarios, mnuUsuarios, mnuBitacoraAccesos, mnuReportes, mnuSeguridad})
         mnuPrincipal.Location = New Point(0, 0)
         mnuPrincipal.Name = "mnuPrincipal"
         mnuPrincipal.RenderMode = ToolStripRenderMode.Professional
@@ -804,6 +806,19 @@ Partial Class frmPrincipal
         mnuConsultarBitacora.Size = New Size(213, 26)
         mnuConsultarBitacora.Text = "Consultar bitácora"
         ' 
+        ' mnuReportes
+        ' 
+        mnuReportes.DropDownItems.AddRange(New ToolStripItem() {mnuCentroReportes})
+        mnuReportes.Name = "mnuReportes"
+        mnuReportes.Size = New Size(72, 24)
+        mnuReportes.Text = "Reportes"
+        ' 
+        ' mnuCentroReportes
+        ' 
+        mnuCentroReportes.Name = "mnuCentroReportes"
+        mnuCentroReportes.Size = New Size(213, 26)
+        mnuCentroReportes.Text = "Centro de reportes"
+        ' 
         ' mnuSeguridad
         ' 
         mnuSeguridad.DropDownItems.AddRange(New ToolStripItem() {mnuCambiarContrasena})
@@ -922,6 +937,8 @@ Partial Class frmPrincipal
     Friend WithEvents mnuHorarios As ToolStripMenuItem
     Friend WithEvents mnuUsuarios As ToolStripMenuItem
     Friend WithEvents mnuBitacoraAccesos As ToolStripMenuItem
+    Friend WithEvents mnuReportes As ToolStripMenuItem
+    Friend WithEvents mnuCentroReportes As ToolStripMenuItem
     Friend WithEvents mnuSeguridad As ToolStripMenuItem
     Friend WithEvents mnuCerrarSesion As ToolStripMenuItem
     Friend WithEvents mnuSalir As ToolStripMenuItem

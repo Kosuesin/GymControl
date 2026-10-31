@@ -39,6 +39,7 @@
 		<Folder Include="My Project\NewFolder1\" />
 		<Folder Include="My Project\NewFolder\" />
 		<Folder Include="database\" />
+		<Folder Include="Debug\" />
 	</ItemGroup>
 
 	<ItemGroup>

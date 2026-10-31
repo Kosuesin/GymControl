@@ -48,6 +48,16 @@ Public Class PagoDAO
     Public Function InsertarPago(idMembresia As Integer, idUsuario As Integer,
                                  monto As Decimal, metodoPago As String,
                                  referencia As String, observacion As String) As Boolean
+        Return InsertarPagoConId(idMembresia, idUsuario, monto, metodoPago, referencia, observacion) > 0
+    End Function
+
+    ''' <summary>
+    ''' Inserta un pago y devuelve el identificador generado.
+    ''' Devuelve 0 si no se pudo registrar.
+    ''' </summary>
+    Public Function InsertarPagoConId(idMembresia As Integer, idUsuario As Integer,
+                                      monto As Decimal, metodoPago As String,
+                                      referencia As String, observacion As String) As Integer
         Const sql As String =
             "INSERT INTO pagos (id_membresia, id_usuario_registro, monto, metodo_pago, referencia, observacion, anulado) " &
             "VALUES (@idMembresia, @idUsuario, @monto, @metodoPago, @referencia, @observacion, 0)"
@@ -61,7 +71,8 @@ Public Class PagoDAO
                 cmd.Parameters.AddWithValue("@referencia", If(String.IsNullOrWhiteSpace(referencia), CType(DBNull.Value, Object), referencia.Trim()))
                 cmd.Parameters.AddWithValue("@observacion", If(String.IsNullOrWhiteSpace(observacion), CType(DBNull.Value, Object), observacion.Trim()))
                 cn.Open()
-                Return cmd.ExecuteNonQuery() > 0
+                If cmd.ExecuteNonQuery() = 0 Then Return 0
+                Return Convert.ToInt32(cmd.LastInsertedId)
             End Using
         End Using
     End Function
@@ -75,6 +86,76 @@ Public Class PagoDAO
                 Return cmd.ExecuteNonQuery() > 0
             End Using
         End Using
+    End Function
+
+    ''' <summary>
+    ''' Devuelve los pagos más recientes con una descripción lista
+    ''' para mostrar en un ComboBox del centro de reportes.
+    ''' </summary>
+    Public Function ListarPagosRecientes(Optional limite As Integer = 200) As DataTable
+
+        Dim tabla As New DataTable()
+
+        Const sql As String =
+            "SELECT p.id_pago, " &
+            "CONCAT('Recibo ', LPAD(p.id_pago, 6, '0'), '  ·  ', s.nombres, ' ', s.apellidos, " &
+            "'  ·  ', DATE_FORMAT(p.fecha_pago, '%d/%m/%Y'), '  ·  C$ ', FORMAT(p.monto, 2), " &
+            "CASE WHEN p.anulado = 1 THEN '  (ANULADO)' ELSE '' END) AS Descripcion " &
+            "FROM pagos p " &
+            "INNER JOIN membresias m ON p.id_membresia = m.id_membresia " &
+            "INNER JOIN socios s ON m.id_socio = s.id_socio " &
+            "ORDER BY p.fecha_pago DESC, p.id_pago DESC LIMIT @limite"
+
+        Using cn As MySqlConnection = ConexionBD.ObtenerConexion()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@limite", Math.Max(1, limite))
+                cn.Open()
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+            End Using
+        End Using
+
+        Return tabla
+
+    End Function
+
+    ''' <summary>
+    ''' Devuelve todos los datos necesarios para imprimir el recibo
+    ''' de un pago: socio, membresía, tipo, usuario y saldo pendiente.
+    ''' </summary>
+    Public Function ObtenerPagoParaRecibo(idPago As Integer) As DataRow
+
+        Dim tabla As New DataTable()
+
+        Const sql As String =
+            "SELECT p.id_pago, p.fecha_pago, p.monto, p.metodo_pago, p.referencia, " &
+            "p.observacion, p.anulado, u.nombre_usuario AS RegistradoPor, " &
+            "s.cedula, CONCAT(s.nombres, ' ', s.apellidos) AS Socio, s.telefono, " &
+            "m.fecha_inicio, m.fecha_vencimiento, m.precio_pactado, m.estado, " &
+            "tm.nombre AS Tipo, " &
+            "(m.precio_pactado - COALESCE((SELECT SUM(p2.monto) FROM pagos p2 " &
+            " WHERE p2.id_membresia = m.id_membresia AND p2.anulado = 0), 0)) AS Saldo " &
+            "FROM pagos p " &
+            "INNER JOIN membresias m ON p.id_membresia = m.id_membresia " &
+            "INNER JOIN tipos_membresia tm ON m.id_tipo = tm.id_tipo " &
+            "INNER JOIN socios s ON m.id_socio = s.id_socio " &
+            "LEFT JOIN usuarios u ON p.id_usuario_registro = u.id_usuario " &
+            "WHERE p.id_pago = @idPago LIMIT 1"
+
+        Using cn As MySqlConnection = ConexionBD.ObtenerConexion()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@idPago", idPago)
+                cn.Open()
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+            End Using
+        End Using
+
+        If tabla.Rows.Count = 0 Then Return Nothing
+        Return tabla.Rows(0)
+
     End Function
 
     ' =========================================================

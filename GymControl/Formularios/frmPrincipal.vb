@@ -505,6 +505,14 @@ Public Class frmPrincipal
 
     End Sub
 
+    Private Sub mnuCentroReportes_Click(sender As Object, e As EventArgs) Handles mnuCentroReportes.Click
+
+        Using formulario As New frmCentroReportes()
+            formulario.ShowDialog(Me)
+        End Using
+
+    End Sub
+
     Private Sub mnuCambiarContrasena_Click(
     sender As Object,
     e As EventArgs
