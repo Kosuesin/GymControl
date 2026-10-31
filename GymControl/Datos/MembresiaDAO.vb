@@ -195,4 +195,122 @@ Public Class MembresiaDAO
 
     End Function
 
+    ''' <summary>
+    ''' Lista los socios activos que tienen una membresía vigente.
+    ''' Se usa para poblar el selector del reporte R02.
+    ''' </summary>
+    Public Function ListarSociosConMembresiaVigente() As DataTable
+
+        Dim tabla As New DataTable()
+
+        Const sql As String =
+            "SELECT s.id_socio, " &
+            "CONCAT(s.nombres, ' ', s.apellidos) AS Socio, " &
+            "tm.nombre AS Tipo, " &
+            "DATE_FORMAT(m.fecha_vencimiento, '%d/%m/%Y') AS Vence, " &
+            "CONCAT(s.nombres, ' ', s.apellidos, '  ·  ', tm.nombre, " &
+            "'  ·  vence ', DATE_FORMAT(m.fecha_vencimiento, '%d/%m/%Y')) AS Descripcion " &
+            "FROM socios s " &
+            "INNER JOIN membresias m ON m.id_socio = s.id_socio " &
+            "INNER JOIN tipos_membresia tm ON m.id_tipo = tm.id_tipo " &
+            "WHERE s.activo = 1 AND m.estado = 'ACTIVA' AND m.fecha_vencimiento >= CURDATE() " &
+            "AND m.id_membresia = (SELECT m2.id_membresia FROM membresias m2 " &
+            "   WHERE m2.id_socio = s.id_socio AND m2.estado = 'ACTIVA' " &
+            "   AND m2.fecha_vencimiento >= CURDATE() " &
+            "   ORDER BY m2.fecha_vencimiento DESC, m2.id_membresia DESC LIMIT 1) " &
+            "ORDER BY s.apellidos, s.nombres"
+
+        Using cn As MySqlConnection = ConexionBD.ObtenerConexion()
+            Using cmd As New MySqlCommand(sql, cn)
+                cn.Open()
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+            End Using
+        End Using
+
+        Return tabla
+
+    End Function
+
+    ''' <summary>
+    ''' Devuelve los datos de la membresía vigente de un socio para
+    ''' generar la constancia (R02). Devuelve Nothing si el socio no
+    ''' tiene una membresía activa y sin vencer.
+    ''' </summary>
+    Public Function ObtenerConstanciaPorSocio(idSocio As Integer) As DataRow
+
+        Dim tabla As New DataTable()
+
+        Const sql As String =
+            "SELECT s.id_socio, s.cedula, CONCAT(s.nombres, ' ', s.apellidos) AS Socio, " &
+            "s.telefono, s.correo, tm.nombre AS Tipo, tm.incluye_clases, " &
+            "m.id_membresia, m.fecha_inicio, m.fecha_vencimiento, m.estado, m.precio_pactado, " &
+            "DATEDIFF(m.fecha_vencimiento, CURDATE()) AS DiasRestantes " &
+            "FROM socios s " &
+            "INNER JOIN membresias m ON m.id_socio = s.id_socio " &
+            "INNER JOIN tipos_membresia tm ON m.id_tipo = tm.id_tipo " &
+            "WHERE s.id_socio = @idSocio AND m.estado = 'ACTIVA' " &
+            "AND m.fecha_vencimiento >= CURDATE() " &
+            "ORDER BY m.fecha_vencimiento DESC, m.id_membresia DESC LIMIT 1"
+
+        Using cn As MySqlConnection = ConexionBD.ObtenerConexion()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@idSocio", idSocio)
+                cn.Open()
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+            End Using
+        End Using
+
+        If tabla.Rows.Count = 0 Then Return Nothing
+        Return tabla.Rows(0)
+
+    End Function
+
+    ''' <summary>
+    ''' Lista las membresías cuya fecha de vencimiento cae dentro del
+    ''' rango [hoy - diasAtras, hoy + diasAdelante]. Se usa en el
+    ''' reporte R03 (listado de vencimientos).
+    ''' </summary>
+    Public Function ListarVencimientos(diasAtras As Integer, diasAdelante As Integer,
+                                       Optional fechaReferencia As Date = #1/1/2000#) As DataTable
+
+        Dim tabla As New DataTable()
+
+        Dim referencia As Date = If(fechaReferencia = #1/1/2000#, Date.Today, fechaReferencia.Date)
+        Dim desde As Date = referencia.AddDays(-Math.Abs(diasAtras))
+        Dim hasta As Date = referencia.AddDays(Math.Abs(diasAdelante))
+
+        Const sql As String =
+            "SELECT s.cedula, CONCAT(s.nombres, ' ', s.apellidos) AS Socio, " &
+            "s.telefono AS Telefono, tm.nombre AS Tipo, " &
+            "DATE_FORMAT(m.fecha_inicio, '%d/%m/%Y') AS Inicio, " &
+            "DATE_FORMAT(m.fecha_vencimiento, '%d/%m/%Y') AS Vencimiento, " &
+            "DATEDIFF(m.fecha_vencimiento, @referencia) AS Dias, " &
+            "m.estado AS Estado " &
+            "FROM membresias m " &
+            "INNER JOIN socios s ON m.id_socio = s.id_socio " &
+            "INNER JOIN tipos_membresia tm ON m.id_tipo = tm.id_tipo " &
+            "WHERE m.estado <> 'CANCELADA' " &
+            "AND m.fecha_vencimiento >= @desde AND m.fecha_vencimiento <= @hasta " &
+            "ORDER BY m.fecha_vencimiento ASC, s.apellidos ASC, s.nombres ASC"
+
+        Using cn As MySqlConnection = ConexionBD.ObtenerConexion()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@referencia", referencia)
+                cmd.Parameters.AddWithValue("@desde", desde)
+                cmd.Parameters.AddWithValue("@hasta", hasta)
+                cn.Open()
+                Using adaptador As New MySqlDataAdapter(cmd)
+                    adaptador.Fill(tabla)
+                End Using
+            End Using
+        End Using
+
+        Return tabla
+
+    End Function
+
 End Class
