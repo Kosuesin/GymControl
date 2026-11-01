@@ -93,6 +93,30 @@ Public Class ExcelCartera
 
             hoja.SheetView.FreezeRows(4)
 
+            ' Formato condicional para las categorías de vencimiento
+            If ultimaFila >= 5 Then
+
+                Dim rangoCategorias = hoja.Range($"K5:K{ultimaFila}")
+
+                rangoCategorias.AddConditionalFormat().
+        WhenEquals("""Al día""").
+        Fill.SetBackgroundColor(XLColor.LightGreen)
+
+                rangoCategorias.AddConditionalFormat().
+        WhenEquals("""1-30""").
+        Fill.SetBackgroundColor(XLColor.LightYellow)
+
+                rangoCategorias.AddConditionalFormat().
+        WhenEquals("""31-60""").
+        Fill.SetBackgroundColor(XLColor.LightSalmon)
+
+                rangoCategorias.AddConditionalFormat().
+        WhenEquals("""Más de 60""").
+        Fill.SetBackgroundColor(XLColor.LightPink)
+
+            End If
+
+
             ' Totales que respetan los filtros
             Dim filaTotal As Integer = fila + 1
 
@@ -101,7 +125,7 @@ Public Class ExcelCartera
             For columna As Integer = 7 To 9
                 Dim letra = hoja.Column(columna).ColumnLetter()
                 hoja.Cell(filaTotal, columna).FormulaA1 =
-                    $"=SUBTOTAL(109,{letra}5:{letra}{ultimaFila})"
+                    $"=SUBTOTAL(109,{letra}5:{letra}{Math.Max(5, ultimaFila)})"
             Next
 
             hoja.Range(filaTotal, 2, filaTotal, 9).
