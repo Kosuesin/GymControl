@@ -44,6 +44,14 @@
 
 	<ItemGroup>
 		<PackageReference Include="MySqlConnector" Version="2.6.2" />
+		<PackageReference Include="ReportViewerCore.WinForms" Version="15.1.33" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="GymControl\Reportes\*.rdlc">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<Link>Reportes\%(Filename)%(Extension)</Link>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
