@@ -310,6 +310,42 @@ Public Class ReporteDAO
 
     End Function
 
+
+' =========================================================
+' R07 - CARTERA DE SALDOS PENDIENTES
+' =========================================================
+
+Public Function ListarCarteraSaldos(incluirAlDia As Boolean) As DataTable
+
+    Const sql As String =
+        "SELECT id_membresia, cedula, socio, telefono, " &
+        "tipo_membresia, fecha_inicio, fecha_vencimiento, " &
+        "precio_pactado, total_pagado_membresia, saldo_membresia " &
+        "FROM vw_saldos_membresia " &
+        "WHERE id_membresia IS NOT NULL " &
+        "AND (@incluirAlDia = 1 OR saldo_membresia > 0) " &
+        "ORDER BY fecha_vencimiento ASC, socio ASC"
+
+    Using cn As MySqlConnection = ConexionReportes.ObtenerConexionReportes()
+        Using cmd As New MySqlCommand(sql, cn)
+
+            cmd.Parameters.AddWithValue(
+                "@incluirAlDia", If(incluirAlDia, 1, 0))
+
+            cn.Open()
+
+            Using adaptador As New MySqlDataAdapter(cmd)
+                Dim tabla As New DataTable("Cartera")
+                adaptador.Fill(tabla)
+                Return tabla
+            End Using
+
+        End Using
+    End Using
+
+End Function
+
+
     ' =========================================================
     ' UTILIDADES
     ' =========================================================
