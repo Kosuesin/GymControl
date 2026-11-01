@@ -125,7 +125,7 @@ Public Class ExcelCartera
             For columna As Integer = 7 To 9
                 Dim letra = hoja.Column(columna).ColumnLetter()
                 hoja.Cell(filaTotal, columna).FormulaA1 =
-                    $"=SUBTOTAL(109,{letra}5:{letra}{ultimaFila})"
+                    $"=SUBTOTAL(109,{letra}5:{letra}{Math.Max(5, ultimaFila)})"
             Next
 
             hoja.Range(filaTotal, 2, filaTotal, 9).

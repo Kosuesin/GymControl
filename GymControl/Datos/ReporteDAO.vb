@@ -390,4 +390,78 @@ End Function
 
     End Sub
 
+
+    ' R08/R09: consultas de solo lectura; no se modifica el esquema SQL.
+    Public Function ListarIngresosAnuales(anio As Integer) As DataTable
+        If anio < 2000 OrElse anio > 9998 Then Throw New ArgumentOutOfRangeException(NameOf(anio))
+        Const sql As String =
+            "SELECT id_pago, fecha_pago, socio, tipo_membresia, metodo_pago, monto, anulado " &
+            "FROM vw_ingresos_detalle WHERE fecha_pago >= @inicio AND fecha_pago < @fin " &
+            "ORDER BY fecha_pago, id_pago"
+        Using cn = ConexionReportes.ObtenerConexionReportes()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@inicio", New Date(anio, 1, 1))
+                cmd.Parameters.AddWithValue("@fin", New Date(anio + 1, 1, 1))
+                cn.Open()
+                Using ad As New MySqlDataAdapter(cmd)
+                    Dim dt As New DataTable("IngresosAnuales")
+                    ad.Fill(dt)
+                    Return dt
+                End Using
+            End Using
+        End Using
+    End Function
+
+    Public Function ObtenerIndicadoresGerenciales(mes As Date) As DataTable
+        Dim inicio As New Date(mes.Year, mes.Month, 1)
+        Dim fin = inicio.AddMonths(1)
+        Const sql As String =
+            "SELECT " &
+            "(SELECT COUNT(*) FROM vw_saldos_membresia WHERE socio_activo=1 AND id_membresia IS NULL) + " &
+            "(SELECT COUNT(DISTINCT id_socio) FROM vw_saldos_membresia WHERE socio_activo=1 AND id_membresia IS NOT NULL) AS socios_activos, " &
+            "(SELECT COUNT(*) FROM vw_saldos_membresia WHERE fecha_inicio>=@inicio AND fecha_inicio<@fin) AS nuevas_membresias, " &
+            "(SELECT COALESCE(SUM(monto_vigente),0) FROM vw_ingresos_detalle WHERE fecha_pago>=@inicio AND fecha_pago<@fin) AS ingresos, " &
+            "(SELECT COALESCE(SUM(saldo_membresia),0) FROM vw_saldos_membresia WHERE id_membresia IS NOT NULL) AS cartera"
+        Return ConsultarConFechas(sql, inicio, fin)
+    End Function
+
+    Public Function ListarIngresosPorPlan(mes As Date) As DataTable
+        Const sql As String =
+            "SELECT tipo_membresia AS plan, COUNT(*) AS pagos, COALESCE(SUM(monto_vigente),0) AS total " &
+            "FROM vw_ingresos_detalle WHERE fecha_pago>=@inicio AND fecha_pago<@fin " &
+            "GROUP BY tipo_membresia ORDER BY total DESC"
+        Dim inicio As New Date(mes.Year, mes.Month, 1)
+        Return ConsultarConFechas(sql, inicio, inicio.AddMonths(1))
+    End Function
+
+    Public Function ListarMayoresSaldos() As DataTable
+        Const sql As String =
+            "SELECT socio, tipo_membresia AS plan, fecha_vencimiento, saldo_membresia AS saldo " &
+            "FROM vw_saldos_membresia WHERE id_membresia IS NOT NULL AND saldo_membresia>0 " &
+            "ORDER BY saldo_membresia DESC, fecha_vencimiento LIMIT 10"
+        Return Consultar(sql)
+    End Function
+
+    Public Function ListarHorasPorInstructor() As DataTable
+        Const sql As String =
+            "SELECT instructor, COUNT(*) AS clases, COALESCE(SUM(horas),0) AS horas " &
+            "FROM vw_horario_semanal WHERE activo=1 GROUP BY instructor ORDER BY horas DESC"
+        Return Consultar(sql)
+    End Function
+
+    Private Shared Function ConsultarConFechas(sql As String, inicio As Date, fin As Date) As DataTable
+        Using cn = ConexionReportes.ObtenerConexionReportes()
+            Using cmd As New MySqlCommand(sql, cn)
+                cmd.Parameters.AddWithValue("@inicio", inicio)
+                cmd.Parameters.AddWithValue("@fin", fin)
+                cn.Open()
+                Using ad As New MySqlDataAdapter(cmd)
+                    Dim dt As New DataTable()
+                    ad.Fill(dt)
+                    Return dt
+                End Using
+            End Using
+        End Using
+    End Function
+
 End Class
